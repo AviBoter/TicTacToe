@@ -6,7 +6,7 @@ namespace Models
     }
     public interface IGameInitiator
     {
-        public void StartGame(TournamentDefinition tournamentDefinition);
+        public void StartGame(string tournamentType);
         
         /*to be added if time will allows to:
         public void ContinueGame(ActiveTournament activeTournament);

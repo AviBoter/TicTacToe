@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using Controllers;
+using GameEvents;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,17 +11,29 @@ namespace Models
         void Awake()
         {
             Lookup.Instance.GameInitiator = this;
+            Lookup.Instance.CrossCrossControllersEvents.OnTournamentStartAction += StartGame;
         }
         
-        public async void StartGame(TournamentDefinition tournamentDefinition)
+        public async void StartGame(string tournamentType)
         {
             await LoadGameScene();
-            ActivateDirector(tournamentDefinition);
+            switch (tournamentType)
+            {
+                case "PvP":
+                    ActivateDirector(TournamentDefinition.PvP);
+                    break;
+                case "PvC":
+                    ActivateDirector(TournamentDefinition.PvC);
+                    break;
+                case "CvC":
+                    ActivateDirector(TournamentDefinition.CvC);
+                    break;
+            }
         }
 
         private void ActivateDirector(TournamentDefinition tournamentDefinition)
         {
-            //Lookup.Instance.GameDirector.ActivateDirector(tournamentDefinition);
+            Lookup.Instance.CrossCrossControllersEvents.OnTournamentDefinitionPLayAction?.Invoke(tournamentDefinition);
         }
 
         private async Task LoadGameScene()
@@ -32,4 +46,5 @@ namespace Models
             }
         }
     }
+    
 }

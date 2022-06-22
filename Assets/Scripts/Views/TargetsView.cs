@@ -34,7 +34,7 @@ namespace Views
         private Image _twoXTwo;
         
         // Update is called once per frame
-        private void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
+        public void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
         {
             Image target = GetTargetImage(location);
             
@@ -76,7 +76,7 @@ namespace Views
             return null;
         }
         
-        private void RemoveTargetAtLocation(KeyValuePair<int,int> location)
+        public void RemoveTargetAtLocation(KeyValuePair<int,int> location)
         {
             Image target = GetTargetImage(location);
 
@@ -84,7 +84,7 @@ namespace Views
             target.DOColor(new Color(0, 0, 0, 0f), 0.5f);
         }
         
-        private void ResetView()
+        public void ResetView()
         {
             for (int i = 0; i < 3; i++)
             {
