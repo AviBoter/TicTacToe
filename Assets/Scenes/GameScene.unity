@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 127592985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1426758292}
+        m_TargetAssemblyTypeName: GameButtonsView, Assembly-CSharp
+        m_MethodName: OnUndoButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &127592985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +576,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492758727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1426758292}
+        m_TargetAssemblyTypeName: GameButtonsView, Assembly-CSharp
+        m_MethodName: OnRestartButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &492758727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,6 +1479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426758291}
+  - component: {fileID: 1426758292}
   m_Layer: 5
   m_Name: buttons
   m_TagString: Untagged
@@ -1485,6 +1510,18 @@ RectTransform:
   m_AnchoredPosition: {x: -301.23242, y: 0.00012207}
   m_SizeDelta: {x: 88.5349, y: 352}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1426758292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426758290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0c4b001a4884519a5ed892150325bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1443924565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,7 +2073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1788994414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1426758292}
+        m_TargetAssemblyTypeName: GameButtonsView, Assembly-CSharp
+        m_MethodName: OnHintButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1788994414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2529,17 +2578,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb29b22f97c5347b5ab48fdd52a8dcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  X: {fileID: 0}
-  O: {fileID: 0}
-  _zeroXZero: {fileID: 0}
-  _zeroXOne: {fileID: 0}
-  _zeroXTwo: {fileID: 0}
-  _oneXZero: {fileID: 0}
-  _oneXOne: {fileID: 0}
-  _oneXTwo: {fileID: 0}
-  _twoXZero: {fileID: 0}
-  _twoXOne: {fileID: 0}
-  _twoXTwo: {fileID: 0}
+  X: {fileID: 21300000, guid: 5e8278e012ff04d9a8bbd92350645568, type: 3}
+  O: {fileID: 21300000, guid: bd30ced15dd1c4a81a8798331e1abe4a, type: 3}
+  _zeroXZero: {fileID: 1812722483}
+  _zeroXOne: {fileID: 1749188415}
+  _zeroXTwo: {fileID: 446763834}
+  _oneXZero: {fileID: 1797255093}
+  _oneXOne: {fileID: 2016386138}
+  _oneXTwo: {fileID: 1378096833}
+  _twoXZero: {fileID: 960044744}
+  _twoXOne: {fileID: 1629374371}
+  _twoXTwo: {fileID: 1127035268}
 --- !u!1 &2102892989
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ namespace Views
     public class TargetsView : MonoBehaviour
     {
         [SerializeField]
-        private Image X;
+        private Sprite X;
         [SerializeField]
-        private Image O;
+        private Sprite O;
         
         [SerializeField]
         private Image _zeroXZero;
@@ -40,12 +40,12 @@ namespace Views
             
             if (type == PLayerType.O)
             {
-                target.sprite = O.sprite;
+                target.sprite = O;
                 target.DOColor(new Color(0, 0, 0, 1f), 0.5f);
             }
             else
             {
-                target.sprite = X.sprite;
+                target.sprite = X;
                 target.DOColor(new Color(0, 0, 0, 1f), 0.5f);
             }
         }
@@ -82,6 +82,17 @@ namespace Views
 
             target.sprite = null;
             target.DOColor(new Color(0, 0, 0, 0f), 0.5f);
+        }
+        
+        private void ResetView()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    RemoveTargetAtLocation(new KeyValuePair<int, int>(i, j));
+                }
+            }
         }
         
     }
