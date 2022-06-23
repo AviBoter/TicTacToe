@@ -11,6 +11,6 @@ public class ManuController : MonoBehaviour
     
     public void OnStartGame()
     {
-        Lookup.Instance.CrossCrossControllersEvents.OnTournamentStartAction.Invoke(_tournamentType.text);
+        Lookup.Instance.CrossControllersEvents.OnTournamentStartAction.Invoke(_tournamentType.text);
     }
 }

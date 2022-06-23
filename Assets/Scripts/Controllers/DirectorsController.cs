@@ -14,7 +14,7 @@ namespace Controllers
 
         private void Awake()
         {
-            Lookup.Instance.CrossCrossControllersEvents.OnTournamentDefinitionPLayAction += ActivateDirector;
+            Lookup.Instance.CrossControllersEvents.OnTournamentDefinitionPLayAction += ActivateDirector;
         }
 
         public void ActivateDirector(TournamentDefinition tournamentDefinition)

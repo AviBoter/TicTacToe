@@ -4,22 +4,20 @@ using UnityEngine;
 
 namespace Models.GameModels
 {
-   
+
+    public enum GameType
+    {
+        PvP = 0, PvC = 1, CvC = 2
+    }
+    public enum GameState
+    {
+        OnGoing = 0, XWin = 1, OWin = 2, Tie = 3
+    }
     public abstract class GameModel
     {
-        private DateTime _gameStartTime;
-
         public bool GameOver = false;
         
-        public GameModel()
-        {
-            _gameStartTime = DateTime.Now;
-            
-        }
-        
-        
-
-        public virtual void MoveToNextTurn()
+        protected virtual void MoveToNextTurn()
         {
             
         }
@@ -27,6 +25,11 @@ namespace Models.GameModels
         public void GameIsOver()
         {
             GameOver = true;
+        }
+
+        public GameState TableState()
+        {
+            return GameState.OnGoing;
         }
     }
 }

@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 namespace Views
 {
+    public enum PlayerTimer
+    {
+        ClientTimer = 0,
+        OpponentTimer = 1
+    }
+    
     [RequireComponent(typeof(Image))]
     public class TurnTimerView : MonoBehaviour, ITimerView
     {
@@ -27,17 +33,31 @@ namespace Views
             _image = GetComponent<Image>();
             if (_playerTimer == PlayerTimer.ClientTimer)
             {
-                if (!Lookup.Instance.ClientTimerView.Contains(this))
+                if (!_clientTimerViews.Contains(this))
                 {
-                    Lookup.Instance.ClientTimerView.Add(this);
+                    _clientTimerViews.Add(this);
                 }
             }
             else
             {
-                if (!Lookup.Instance.OpponentTimerView.Contains(this))
+                if (!_opponentTimerViews.Contains(this))
                 {
-                    Lookup.Instance.OpponentTimerView.Add(this);
+                    _opponentTimerViews.Add(this);
                 }
+            }
+        }
+        
+        private void OnTimerStarted(float time, bool isClient)
+        {
+            if (isClient)
+            {
+                _opponentTimerViews.ForEach(timerView => timerView.StopTimerView(0));
+                _clientTimerViews.ForEach(timerView => timerView.StartTimerView(time));
+            }
+            else
+            {
+                _clientTimerViews.ForEach(timerView => timerView.StopTimerView(0));
+                _opponentTimerViews.ForEach(timerView => timerView.StartTimerView(time));
             }
         }
 
@@ -72,11 +92,5 @@ namespace Views
                 _opponentTimerViews.Remove(this);
             }
         }
-    }
-
-    public enum PlayerTimer
-    {
-        ClientTimer = 0,
-        OpponentTimer = 1
     }
 }

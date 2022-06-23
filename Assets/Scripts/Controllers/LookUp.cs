@@ -83,7 +83,7 @@ namespace Controllers
         #endregion
 
         private CrossControllersEvents _crossControllersEvents;
-        public CrossControllersEvents CrossCrossControllersEvents 
+        public CrossControllersEvents CrossControllersEvents 
         {
             get
             {

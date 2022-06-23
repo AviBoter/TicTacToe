@@ -1,10 +1,24 @@
+
 namespace Models.GameModels
 {
     public class PvCGameModel : GameModel
     {
-        public override void MoveToNextTurn()
+        public bool ClientPlaying { set; get; } = false;
+        protected override void MoveToNextTurn()
         {
             base.MoveToNextTurn();
+            if (!GameOver)
+            {
+                ClientPlaying = !ClientPlaying;
+                if (ClientPlaying)
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
         }
     }
 }

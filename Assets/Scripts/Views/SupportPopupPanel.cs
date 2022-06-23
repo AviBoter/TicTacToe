@@ -1,17 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
 using TMPro;
-using Views;
+using UnityEngine;
 
-
-namespace Parana.Common.UI
+namespace Views
 {
     public class SupportPopupPanel : MonoBehaviour
     {
-        [SerializeField] DropView _dropDown = null;
+        [SerializeField] private DropView _dropDown = null;
         private readonly List<string> _categoriesOptions = new List<string>()
         {
             "PvP", "PvC", "CvC"

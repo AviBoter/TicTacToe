@@ -11,7 +11,7 @@ namespace Models
         void Awake()
         {
             Lookup.Instance.GameInitiator = this;
-            Lookup.Instance.CrossCrossControllersEvents.OnTournamentStartAction += StartGame;
+            Lookup.Instance.CrossControllersEvents.OnTournamentStartAction += StartGame;
         }
         
         public async void StartGame(string tournamentType)
@@ -33,7 +33,7 @@ namespace Models
 
         private void ActivateDirector(TournamentDefinition tournamentDefinition)
         {
-            Lookup.Instance.CrossCrossControllersEvents.OnTournamentDefinitionPLayAction?.Invoke(tournamentDefinition);
+            Lookup.Instance.CrossControllersEvents.OnTournamentDefinitionPLayAction?.Invoke(tournamentDefinition);
         }
 
         private async Task LoadGameScene()

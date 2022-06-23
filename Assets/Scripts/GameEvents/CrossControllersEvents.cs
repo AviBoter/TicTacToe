@@ -7,5 +7,6 @@ namespace GameEvents
     {
         public Action<string> OnTournamentStartAction;
         public Action<TournamentDefinition> OnTournamentDefinitionPLayAction;
+        public Action GameOverAction;
     }
 }
