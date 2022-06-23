@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Models;
 using UnityEngine;
 using Views;
@@ -9,12 +10,13 @@ namespace Controllers
         private TargetsModel _targetsModel;
         private TargetsView _targetsView;
         private GameButtonsView _gameButtonsView;
-      
+
         void Awake()
         {
             _targetsModel = new TargetsModel();
             _targetsView = FindObjectOfType<TargetsView>();
             _gameButtonsView = FindObjectOfType<GameButtonsView>();
+            _targetsView.OnPlayerPressTargetEventAction += OnTargetPressedByPlayer;
         }
         
         void Start()
@@ -58,5 +60,17 @@ namespace Controllers
         }
         
         #endregion
+        
+        private void OnTargetPressedByPlayer(KeyValuePair<int,int> location)
+        {
+            bool result = _targetsModel.PlayerPressTargetButton(location);
+
+            if (result)
+            {
+                _targetsView.AddTargetAtLocation(location,Lookup.Instance.GameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction?.Invoke();
+            }
+        }
+        
     }
 }

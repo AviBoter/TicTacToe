@@ -17,9 +17,14 @@ namespace Models.GameModels
     {
         public bool GameOver = false;
         
-        protected virtual void MoveToNextTurn()
+        [NonSerialized]
+        public bool _isPlayer1 = true;
+        
+        public abstract event Action<float,bool> OnMoveToNextTurnEventAction;
+        
+        public virtual void MoveToNextTurn()
         {
-            
+            _isPlayer1 = !_isPlayer1;
         }
         
         public void GameIsOver()

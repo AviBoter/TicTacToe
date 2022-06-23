@@ -42,7 +42,6 @@ namespace Models
             while (!sceneLoad.isDone)
             {
                 await Task.Delay(200);
-                Debug.Log("Loading scene");
             }
         }
     }

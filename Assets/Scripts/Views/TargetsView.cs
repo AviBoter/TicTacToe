@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -33,7 +35,18 @@ namespace Views
         [SerializeField]
         private Image _twoXTwo;
         
-        // Update is called once per frame
+        private List<TargetView> targets;
+
+        public event Action<KeyValuePair<int, int>> OnPlayerPressTargetEventAction;
+        private void Awake()
+        {
+            targets = GetComponentsInChildren<TargetView>().ToList();
+            foreach (var targetView in targets)
+            {
+                targetView.OnPlayerPressTarget += CreateNewTarget;
+            }
+        }
+        
         public void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
         {
             Image target = GetTargetImage(location);
@@ -50,6 +63,13 @@ namespace Views
             }
         }
 
+        public void CreateNewTarget(int x, int y)
+        {
+            Debug.Log("CreateNewTarget: "+ x +" "+y);
+            KeyValuePair<int, int> location = new KeyValuePair<int, int>(x, y);
+            OnPlayerPressTargetEventAction?.Invoke(location);
+            
+        }
         private Image GetTargetImage(KeyValuePair<int, int> keyValuePair)
         {
             switch (keyValuePair)

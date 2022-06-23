@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controllers;
 using UnityEngine;
 
 public enum TargetState
@@ -21,7 +22,8 @@ namespace Models
         private int[][] _targetsMatrix;
         private LinkedList<PlayerMove> _playersMoves;
 
-        public Action<PlayerMove> OnDeleteLastMoveFromListAction;
+        public event Action<PlayerMove> OnDeleteLastMoveFromListAction;
+        public event Action OnMoveAddedToListAction;
         public TargetsModel()
         {
             _targetsMatrix = new int[3][];
@@ -37,6 +39,7 @@ namespace Models
         public void AddMoveToList(KeyValuePair<int, int> location, PLayerType player)
         {
             _playersMoves.AddFirst(new PlayerMove(location, player));
+            _targetsMatrix[location.Key][location.Value] = (int)(TargetState)player;
         }
         
         public void DeleteLastMoveFromList()
@@ -55,6 +58,21 @@ namespace Models
                     _targetsMatrix[i][j] = (int)TargetState.Non;
                 }
             }
+        }
+
+        private bool IsTargetAvailable(int x,int y)
+        {
+            return _targetsMatrix[x][y] == (int)TargetState.Non;
+        }
+        
+        public bool PlayerPressTargetButton(KeyValuePair<int, int> location)
+        {
+            if (IsTargetAvailable(location.Key, location.Value))
+            {
+                AddMoveToList(location, Lookup.Instance.GameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                return true;
+            }
+            return false;
         }
     }
 }
