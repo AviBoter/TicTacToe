@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using GameEvents;
+using Models.GameModels;
 
 namespace Views
 {
     public class TargetsView : MonoBehaviour
     {
+        CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
+            
         [SerializeField]
         private Sprite X;
         [SerializeField]
@@ -43,8 +48,10 @@ namespace Views
             targets = GetComponentsInChildren<TargetView>().ToList();
             foreach (var targetView in targets)
             {
-                targetView.OnPlayerPressTarget += CreateNewTarget;
+                _controllersEvents.OnPlayerPressTarget += CreateNewTarget;
             }
+
+            _controllersEvents.GameOverAction += GameOver;
         }
         
         public void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
@@ -113,6 +120,14 @@ namespace Views
                     RemoveTargetAtLocation(new KeyValuePair<int, int>(i, j));
                 }
             }
+            
+            GameOver(GameState.OWin);
+        }
+
+        private void GameOver(GameState state)
+        {
+            _controllersEvents.OnPlayerPressTarget -= CreateNewTarget;
+            _controllersEvents.GameOverAction -= GameOver;
         }
         
     }

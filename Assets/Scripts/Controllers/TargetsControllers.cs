@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameEvents;
 using Models;
 using Models.GameModels;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Controllers
         private TargetsView _targetsView;
         private GameButtonsView _gameButtonsView;
 
+        private GameModel _gameModel => Lookup.Instance.GameModel;
+        private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         void Awake()
         {
             _targetsModel = new TargetsModel();
@@ -67,14 +70,15 @@ namespace Controllers
             bool result = _targetsModel.PlayerPressTargetButton(location);
             if (result)
             {
-                _targetsView.AddTargetAtLocation(location,Lookup.Instance.GameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
-                Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction?.Invoke();
+                _targetsView.AddTargetAtLocation(location,_gameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                _controllersEvents.OnPlayerPressTargetAction?.Invoke();
             }
         }
 
         private void GameOver(GameState gameState)
         {
-            Lookup.Instance.CrossControllersEvents.GameOverAction.Invoke(gameState);
+            _controllersEvents.GameOverAction?.Invoke(gameState);
+            _targetsView.OnPlayerPressTargetEventAction -= OnTargetPressedByPlayer;
         }
 
     }

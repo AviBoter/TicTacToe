@@ -12,5 +12,7 @@ namespace GameEvents
         public Action OnPlayerPressTargetAction;
         
         public Action<GameState> GameOverAction;
+        
+        public Action<int, int> OnPlayerPressTarget;
     }
 }
