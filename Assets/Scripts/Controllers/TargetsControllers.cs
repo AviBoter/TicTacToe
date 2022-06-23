@@ -24,8 +24,8 @@ namespace Controllers
             _gameButtonsView.OnUndoButtonPressedAction += OnUndoButtonPressed;
             _gameButtonsView.OnRestartButtonPressedAction += OnRestartButtonPressed;
             _gameButtonsView.OnHintButtonPressedAction += OnHintButtonPressed;
-
             _targetsModel.OnDeleteLastMoveFromListAction += OnDeleteLastMoveFromModel;
+            _targetsModel.OnGameStateChanged += GameOver;
         }
 
         #region undoRelated
@@ -64,13 +64,17 @@ namespace Controllers
         private void OnTargetPressedByPlayer(KeyValuePair<int,int> location)
         {
             bool result = _targetsModel.PlayerPressTargetButton(location);
-
             if (result)
             {
                 _targetsView.AddTargetAtLocation(location,Lookup.Instance.GameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
                 Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction?.Invoke();
             }
         }
-        
+
+        private void GameOver()
+        {
+            
+        }
+
     }
 }

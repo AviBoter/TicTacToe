@@ -116,7 +116,10 @@ namespace Views
         public void StopTimerView(float stopTime)
         {
             tween?.Kill();
-            _fillAmount = 0;
+            _countTimeBool = false;
+            _turnTime = 5;
+            _timeCounter = 5;
+            _fillAmount = 5;
         }
 
         private void OnDestroy()

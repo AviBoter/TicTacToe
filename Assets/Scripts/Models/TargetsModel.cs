@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controllers;
+using Models.GameModels;
 using UnityEngine;
 
 public enum TargetState
@@ -23,7 +24,7 @@ namespace Models
         private LinkedList<PlayerMove> _playersMoves;
 
         public event Action<PlayerMove> OnDeleteLastMoveFromListAction;
-        public event Action OnMoveAddedToListAction;
+        public event Action OnGameStateChanged;
         public TargetsModel()
         {
             _targetsMatrix = new int[3][];
@@ -40,6 +41,10 @@ namespace Models
         {
             _playersMoves.AddFirst(new PlayerMove(location, player));
             _targetsMatrix[location.Key][location.Value] = (int)(TargetState)player;
+            if (GetGameState() != GameState.OnGoing)
+            {
+                OnGameStateChanged?.Invoke();
+            }
         }
         
         public void DeleteLastMoveFromList()
@@ -56,6 +61,10 @@ namespace Models
                 for (int j = 0; j < 3; j++)
                 {
                     _targetsMatrix[i][j] = (int)TargetState.Non;
+                    if (_playersMoves?.Count > 0)
+                    {
+                        DeleteLastMoveFromList();
+                    }
                 }
             }
         }
@@ -73,6 +82,101 @@ namespace Models
                 return true;
             }
             return false;
+        }
+        
+        public GameState GetGameState()
+        {
+            GameState state = CheckRowsVictory();
+            if (state != 0)
+            {
+                return state;
+            }
+            
+            state = CheckColumnsVictory();
+            if (state != 0)
+            {
+                return state;
+            }
+            
+            state = CheckDiagonalsVictory();
+            if (state != 0)
+            {
+                return state;
+            }
+
+            state = CheckGameTie();
+            if (state != 0)
+            {
+                return state;
+            }
+            
+            return GameState.OnGoing;
+        }
+
+        private GameState CheckGameTie()
+        {
+            GameState state = GameState.OnGoing;
+            for (int i = 0; i < _targetsMatrix.Length; i++)
+            {
+                for (int j = 0; j < _targetsMatrix[i].Length; j++)
+                {
+                    if (_targetsMatrix[i][j] == 0)
+                    {
+                        state = GameState.Tie;
+                    }
+                }
+            }
+
+            return state;
+        }
+
+        private GameState CheckDiagonalsVictory()
+        {
+            if (_targetsMatrix[0][0] == _targetsMatrix[1][1] && _targetsMatrix[1][1] == _targetsMatrix[2][2])
+            {
+              return (GameState)_targetsMatrix[0][0];
+            }
+ 
+            if (_targetsMatrix[0][2] == _targetsMatrix[1][1] && _targetsMatrix[1][1] == _targetsMatrix[2][0])
+            {
+                return (GameState)_targetsMatrix[0][2];
+            }
+
+            return GameState.OnGoing;
+        }
+
+        private GameState CheckRowsVictory()
+        {
+            for (int row = 0; row < 3; row++)
+            {
+                if (_targetsMatrix[row][0] == _targetsMatrix[row][1] &&
+                    _targetsMatrix[row][1] == _targetsMatrix[row][2])
+                {
+                    if (_targetsMatrix[row][0] == (int)PLayerType.X)
+                        return GameState.XWin;
+                    if(_targetsMatrix[row][0] == (int)PLayerType.O)
+                        return GameState.OWin;
+                }
+            }
+            return GameState.OnGoing;
+        }
+        
+        private GameState CheckColumnsVictory()
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (_targetsMatrix[0][col] == _targetsMatrix[1][col] &&
+                    _targetsMatrix[1][col] == _targetsMatrix[2][col])
+                {
+                    if (_targetsMatrix[0][col] == (int)PLayerType.X)
+                        return GameState.XWin;
+ 
+                    else if (_targetsMatrix[0][col] == (int)PLayerType.O)
+                        return GameState.OWin;
+                }
+            }
+
+            return GameState.OnGoing;
         }
     }
 }
