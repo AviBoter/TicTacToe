@@ -24,7 +24,7 @@ namespace Models
         private LinkedList<PlayerMove> _playersMoves;
 
         public event Action<PlayerMove> OnDeleteLastMoveFromListAction;
-        public event Action OnGameStateChanged;
+        public event Action<GameState> OnGameStateChanged;
         public TargetsModel()
         {
             _targetsMatrix = new int[3][];
@@ -41,9 +41,10 @@ namespace Models
         {
             _playersMoves.AddFirst(new PlayerMove(location, player));
             _targetsMatrix[location.Key][location.Value] = (int)(TargetState)player;
-            if (GetGameState() != GameState.OnGoing)
+            GameState state = GetGameState();
+            if (state != GameState.OnGoing)
             {
-                OnGameStateChanged?.Invoke();
+                OnGameStateChanged?.Invoke(state);
             }
         }
         
@@ -84,7 +85,7 @@ namespace Models
             return false;
         }
         
-        public GameState GetGameState()
+        private GameState GetGameState()
         {
             GameState state = CheckRowsVictory();
             if (state != 0)
@@ -109,20 +110,20 @@ namespace Models
             {
                 return state;
             }
-            
+           
             return GameState.OnGoing;
         }
 
         private GameState CheckGameTie()
         {
-            GameState state = GameState.OnGoing;
+            GameState state = GameState.Tie;
             for (int i = 0; i < _targetsMatrix.Length; i++)
             {
                 for (int j = 0; j < _targetsMatrix[i].Length; j++)
                 {
                     if (_targetsMatrix[i][j] == 0)
                     {
-                        state = GameState.Tie;
+                        state = GameState.OnGoing;
                     }
                 }
             }

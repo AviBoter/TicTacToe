@@ -10,6 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/MessagesManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/GameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/LookUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/TargetsControllers.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,7 +93,7 @@
       <workItem from="1655841931156" duration="40000" />
       <workItem from="1655842040754" duration="204000" />
       <workItem from="1655842252430" duration="34470000" />
-      <workItem from="1655933241200" duration="26450000" />
+      <workItem from="1655933241200" duration="33069000" />
     </task>
     <servers />
   </component>

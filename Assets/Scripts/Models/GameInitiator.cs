@@ -17,6 +17,7 @@ namespace Models
         public async void StartGame(string tournamentType)
         {
             await LoadGameScene();
+            Lookup.Instance.CrossControllersEvents.OnTournamentStartAction -= StartGame;
             switch (tournamentType)
             {
                 case "PvP":

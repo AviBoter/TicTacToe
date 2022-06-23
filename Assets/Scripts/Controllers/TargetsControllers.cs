@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Models;
+using Models.GameModels;
 using UnityEngine;
 using Views;
 
@@ -71,9 +72,9 @@ namespace Controllers
             }
         }
 
-        private void GameOver()
+        private void GameOver(GameState gameState)
         {
-            
+            Lookup.Instance.CrossControllersEvents.GameOverAction.Invoke(gameState);
         }
 
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Models.GameModels;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Views;
 
 namespace Controllers
@@ -70,12 +71,31 @@ namespace Controllers
             }
         }
 
-        private void GameOver()
+        private void GameOver(GameState state)
         {
+            Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction -= PlayerPressedTarget;
+            Lookup.Instance.CrossControllersEvents.GameOverAction -= GameOver;
             OnTimerStopped(0);
+            _gameModel.SetGameState(state);
+            if (state == GameState.Tie)
+            {
+                MessagesManager.Instance.ShowMessage("Game Over!",3);
+            }
+            else
+            {
+                MessagesManager.Instance.ShowMessage((state == GameState.XWin ? "Player1" : "Player2") +" Win the Game!",3);
+            }
+
+            StartCoroutine(ExitTheGame());
         }
 
-        public void NextTurn()
+        private IEnumerator ExitTheGame()
+        {
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene(0);
+        }
+
+        private void NextTurn()
         {
             _gameModel.MoveToNextTurn();
         }

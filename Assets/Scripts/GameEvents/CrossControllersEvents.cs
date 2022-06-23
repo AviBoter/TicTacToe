@@ -1,5 +1,6 @@
 using System;
 using Models;
+using Models.GameModels;
 
 namespace GameEvents
 {
@@ -10,6 +11,6 @@ namespace GameEvents
         
         public Action OnPlayerPressTargetAction;
         
-        public Action GameOverAction;
+        public Action<GameState> GameOverAction;
     }
 }

@@ -48,6 +48,7 @@ namespace Views
 
         private void Awake()
         {
+            _countTimeBool = false;
             _image = GetComponent<Image>();
             if (_playerTimer == PlayerTimer.ClientTimer)
             {

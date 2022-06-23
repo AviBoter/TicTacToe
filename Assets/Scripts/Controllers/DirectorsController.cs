@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameEvents;
 using Models;
+using Models.GameModels;
 using UnityEngine;
 
 namespace Controllers
@@ -12,13 +14,16 @@ namespace Controllers
         [SerializeField] private GameObject _pvcDirector;
         [SerializeField] private GameObject _cvcDirector;
 
+        private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         private void Awake()
         {
-            Lookup.Instance.CrossControllersEvents.OnTournamentDefinitionPLayAction += ActivateDirector;
+            _controllersEvents.OnTournamentDefinitionPLayAction += ActivateDirector;
+            _controllersEvents.GameOverAction += GameOver;
         }
 
-        public void ActivateDirector(TournamentDefinition tournamentDefinition)
+        private void ActivateDirector(TournamentDefinition tournamentDefinition)
         {
+            Lookup.Instance.CrossControllersEvents.OnTournamentDefinitionPLayAction -= ActivateDirector;
             switch (tournamentDefinition)
             {
                 case TournamentDefinition.PvP:
@@ -37,6 +42,14 @@ namespace Controllers
                     _cvcDirector.SetActive(true);
                     break;
             }
+        }
+
+        private void GameOver(GameState state)
+        {
+            _pvpDirector.SetActive(false);
+            _pvcDirector.SetActive(false);
+            _cvcDirector.SetActive(false);
+            _controllersEvents.GameOverAction -= GameOver;
         }
     }
 }
