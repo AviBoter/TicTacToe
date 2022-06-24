@@ -128,6 +128,7 @@ namespace Views
         {
             _controllersEvents.OnPlayerPressTarget -= CreateNewTarget;
             _controllersEvents.GameOverAction -= GameOver;
+            ResetAllViews();
         }
 
         private void ResetAllViews()
@@ -138,6 +139,7 @@ namespace Views
                 Debug.Log("view.TargetPressed(false)");
                 view.TargetPressed(false);
             }
+            _controllersEvents.OnPlayerPressRestartAction -= ResetAllViews;
         }
     }
 }
