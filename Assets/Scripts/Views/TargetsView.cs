@@ -53,6 +53,7 @@ namespace Views
             }
 
             _controllersEvents.GameOverAction += GameOver;
+            _controllersEvents.OnPlayerPressRestartAction += ResetAllViews;
         }
         
         public void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
@@ -128,6 +129,15 @@ namespace Views
             _controllersEvents.OnPlayerPressTarget -= CreateNewTarget;
             _controllersEvents.GameOverAction -= GameOver;
         }
-        
+
+        private void ResetAllViews()
+        {
+            List<TargetView> views = gameObject.GetComponentsInChildren<TargetView>().ToList();
+            foreach (TargetView view in views)
+            {
+                Debug.Log("view.TargetPressed(false)");
+                view.TargetPressed(false);
+            }
+        }
     }
 }

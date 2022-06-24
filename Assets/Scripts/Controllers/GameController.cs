@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameEvents;
 using Models.GameModels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,8 @@ namespace Controllers
     public class GameController : MonoBehaviour
     {
         private GameModel _gameModel => Lookup.Instance.GameModel;
+
+        private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
         List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
         
@@ -21,13 +24,14 @@ namespace Controllers
         IEnumerator AssignListeners()
         {
             yield return new WaitUntil(() => Lookup.Instance.CrossControllersEvents != null);
-            Lookup.Instance.CrossControllersEvents.GameOverAction += GameOver;
+            _controllersEvents.GameOverAction += GameOver;
             
             yield return new WaitUntil(() => _clientTimerView != null);
             OnTimerStarted(5, true);
             yield return new WaitUntil(() => _gameModel != null);
             _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;
-            Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction += PlayerPressedTarget;
+            _controllersEvents.OnPlayerPressTargetAction += PlayerPressedTarget;
+            _controllersEvents.OnPlayerPressRestartAction += PlayerPressedRestart;
 
         }
         
@@ -49,13 +53,13 @@ namespace Controllers
             {
                 timerView.StopTimerView(0);
                 TurnTimerView turnTimerView = (TurnTimerView)timerView;
-                turnTimerView.OnTimerIsFinishedAction -= NextTurn;
+                turnTimerView.OnTimerIsFinishedAction -= GameOver;
             });
             startTimers.ForEach(timerView =>
             {
                 timerView.StartTimerView(time);
                 TurnTimerView turnTimerView = (TurnTimerView)timerView;
-                turnTimerView.OnTimerIsFinishedAction += NextTurn;
+                turnTimerView.OnTimerIsFinishedAction += GameOver;
             });
         }
 
@@ -73,8 +77,8 @@ namespace Controllers
 
         private void GameOver(GameState state)
         {
-            Lookup.Instance.CrossControllersEvents.OnPlayerPressTargetAction -= PlayerPressedTarget;
-            Lookup.Instance.CrossControllersEvents.GameOverAction -= GameOver;
+            _controllersEvents.OnPlayerPressTargetAction -= PlayerPressedTarget;
+            _controllersEvents.GameOverAction -= GameOver;
             OnTimerStopped(0);
             _gameModel.SetGameState(state);
             if (state == GameState.Tie)
@@ -83,6 +87,10 @@ namespace Controllers
             }
             else
             {
+                if (state == GameState.OnGoing)
+                {
+                    state = _gameModel._isPlayer1 ? GameState.OWin : GameState.XWin;
+                }
                 MessagesManager.Instance.ShowMessage((state == GameState.XWin ? "Player1" : "Player2") +" Win the Game!",3);
             }
 
@@ -104,6 +112,13 @@ namespace Controllers
         {
             OnTimerStopped(0, _gameModel._isPlayer1);
             NextTurn();
+        }
+
+        private void PlayerPressedRestart()
+        {
+            OnTimerStarted(5,true);
+            _gameModel._isPlayer1 = false;
+            _gameModel.MoveToNextTurn();
         }
     }
 }

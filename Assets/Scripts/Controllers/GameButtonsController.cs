@@ -1,9 +1,10 @@
 using System;
+using Controllers;
 using UnityEngine;
 
 namespace Views
 {
-    public class GameButtonsView : MonoBehaviour
+    public class GameButtonsController : MonoBehaviour
     {
         private bool _isPvP { get; set; } = false;
 
@@ -23,6 +24,7 @@ namespace Views
             if (!_isPvP)
             {
                 OnRestartButtonPressedAction?.Invoke();
+                Lookup.Instance.CrossControllersEvents.OnPlayerPressRestartAction.Invoke();
             }
         }
     

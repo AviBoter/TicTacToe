@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Controllers;
 using DG.Tweening;
+using Models.GameModels;
 using StaticClasses;
 using TMPro;
 using UnityEngine;
@@ -44,7 +45,7 @@ namespace Views
                  
         }
 
-        public event Action OnTimerIsFinishedAction;
+        public event Action<GameState> OnTimerIsFinishedAction;
 
         private void Awake()
         {
@@ -74,11 +75,11 @@ namespace Views
                 _timeCounter = _turnTime;
             }
 
-            else if(_turnTime <= 0 && _countTimeBool)
+            else if (_turnTime <= 0 && _countTimeBool)
             {
                 _countTimeBool = false;
                 _turnTime = 5;
-                OnTimerIsFinishedAction?.Invoke();
+                OnTimerIsFinishedAction?.Invoke(GameState.OnGoing);
             }
         }
 

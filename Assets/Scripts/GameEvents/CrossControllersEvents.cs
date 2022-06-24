@@ -16,5 +16,7 @@ namespace GameEvents
         public Action<int, int, bool> OnPlayerPressTarget;
         
         public Action OnComputerTurnAction;
+        
+        public Action OnPlayerPressRestartAction;
     }
 }

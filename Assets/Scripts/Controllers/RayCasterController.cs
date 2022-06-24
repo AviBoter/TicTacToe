@@ -37,19 +37,24 @@ public class RayCasterController : MonoBehaviour
             {
                 if (result.gameObject.CompareTag("Target"))
                 {
-                    TargetView targetView = result.gameObject.GetComponent<TargetView>();
-                    if (_gameModel is PvpGameModel && !targetView.IsPressed())
-                    {
-                        _ControllersEvents.OnPlayerPressTarget.Invoke(targetView.GetX(),targetView.GetY() , true);
-                        targetView.TargetPressed();
-                    }
-                    else if (_gameModel is PvCGameModel && !targetView.IsPressed() && _gameModel._isPlayer1)
-                    {
-                        _ControllersEvents.OnPlayerPressTarget.Invoke(targetView.GetX(),targetView.GetY(), true);
-                        targetView.TargetPressed();
-                    }
+                    HandleResultView(result);
                 }
             }
+        }
+    }
+
+    private void HandleResultView(RaycastResult result)
+    {
+        TargetView targetView = result.gameObject.GetComponent<TargetView>();
+        if (_gameModel is PvpGameModel && !targetView.IsPressed())
+        {
+            _ControllersEvents.OnPlayerPressTarget.Invoke(targetView.GetX(),targetView.GetY() , true);
+            targetView.TargetPressed(true);
+        }
+        else if (_gameModel is PvCGameModel && !targetView.IsPressed() && _gameModel._isPlayer1)
+        {
+            _ControllersEvents.OnPlayerPressTarget.Invoke(targetView.GetX(),targetView.GetY(), true);
+            targetView.TargetPressed(true);
         }
     }
 }

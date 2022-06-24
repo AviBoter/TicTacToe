@@ -569,6 +569,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924284620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3181023479077080123, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+  m_PrefabInstance: {fileID: 5635740472594333922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0c4b001a4884519a5ed892150325bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1928228116 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5635740472835665398, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
@@ -1124,9 +1135,33 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5635740472507491876, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924284620}
+    - target: {fileID: 5635740472507491876, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRestartButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740472507491876, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Views.GameButtonsController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5635740472594333924, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740472621001466, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924284620}
+    - target: {fileID: 5635740472621001466, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUndoButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740472621001466, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Views.GameButtonsController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5635740472781271490, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_RaycastTarget
@@ -1231,6 +1266,18 @@ PrefabInstance:
     - target: {fileID: 5635740473216266065, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473242346383, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924284620}
+    - target: {fileID: 5635740473242346383, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHintButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473242346383, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Views.GameButtonsController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5635740473261129695, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString

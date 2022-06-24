@@ -26,9 +26,9 @@ namespace Views
             return Pressed;
         }
         
-        public void TargetPressed()
+        public void TargetPressed(bool value)
         {
-            Pressed = true;
+            Pressed = value;
         }
     }
 }

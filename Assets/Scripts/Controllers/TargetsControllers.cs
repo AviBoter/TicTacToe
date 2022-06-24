@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using GameEvents;
 using Models;
 using Models.GameModels;
 using UnityEngine;
 using Views;
+using Random = UnityEngine.Random;
 
 namespace Controllers
 {
@@ -11,7 +13,7 @@ namespace Controllers
     {
         private TargetsModel _targetsModel;
         private TargetsView _targetsView;
-        private GameButtonsView _gameButtonsView;
+        private GameButtonsController _gameButtonsController;
 
         private GameModel _gameModel => Lookup.Instance.GameModel;
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
@@ -19,15 +21,15 @@ namespace Controllers
         {
             _targetsModel = new TargetsModel();
             _targetsView = FindObjectOfType<TargetsView>();
-            _gameButtonsView = FindObjectOfType<GameButtonsView>();
+            _gameButtonsController = FindObjectOfType<GameButtonsController>();
             _targetsView.OnPlayerPressTargetEventAction += OnTargetPressedByPlayer;
         }
         
         void Start()
         {
-            _gameButtonsView.OnUndoButtonPressedAction += OnUndoButtonPressed;
-            _gameButtonsView.OnRestartButtonPressedAction += OnRestartButtonPressed;
-            _gameButtonsView.OnHintButtonPressedAction += OnHintButtonPressed;
+            _gameButtonsController.OnUndoButtonPressedAction += OnUndoButtonPressed;
+            _gameButtonsController.OnRestartButtonPressedAction += OnRestartButtonPressed;
+            _gameButtonsController.OnHintButtonPressedAction += OnHintButtonPressed;
             _targetsModel.OnDeleteLastMoveFromListAction += OnDeleteLastMoveFromModel;
             _targetsModel.OnGameStateChanged += GameOver;
             _controllersEvents.OnComputerTurnAction += OnTargetPressedByComputer;
@@ -51,6 +53,7 @@ namespace Controllers
         
         private void OnRestartButtonPressed()
         {
+            Debug.Log("Restart called!");
             _targetsModel.Reset();
             _targetsView.ResetView();
         }
@@ -77,27 +80,22 @@ namespace Controllers
         }
         
         private void OnTargetPressedByComputer()
-        {
-            Debug.Log("1");
+        { 
             bool randomTargetFound = false;
-            for (int i = 0; i < 3 && !randomTargetFound; i++)
-            {
-                for (int j = 0; j < 3 && !randomTargetFound; j++)
-                {
-                    
-                    Debug.Log("1");
-                    KeyValuePair<int, int> location = new KeyValuePair<int, int>(i, j);
-                    bool result = _targetsModel.PlayerPressTargetButton(location);
-                    if (result)
-                    {
-                        randomTargetFound = true;
-                        _targetsView.CreateNewTarget(location.Key,location.Value , false);
-                        _targetsView.AddTargetAtLocation(location, PLayerType.O);
-                        _controllersEvents.OnPlayerPressTargetAction?.Invoke();
-                        
-                    }
-                }
-            }
+           while(!randomTargetFound)
+           {
+               int xRandom = Random.Range(0, 3);
+               int yRandom = Random.Range(0, 3);
+               KeyValuePair<int, int> location = new KeyValuePair<int, int>(xRandom, yRandom);
+               bool result = _targetsModel.PlayerPressTargetButton(location);
+               if (result)
+               {
+                   randomTargetFound = true;
+                   _targetsView.CreateNewTarget(location.Key,location.Value , false);
+                   _targetsView.AddTargetAtLocation(location, PLayerType.O);
+                   _controllersEvents.OnPlayerPressTargetAction?.Invoke();
+               }
+           }
         }
 
         private void GameOver(GameState gameState)
