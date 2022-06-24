@@ -43,6 +43,7 @@ namespace Views
         private List<TargetView> targets;
 
         public event Action<KeyValuePair<int, int>> OnPlayerPressTargetEventAction;
+        public event Action OnComputerPressTargetEventAction;
         private void Awake()
         {
             targets = GetComponentsInChildren<TargetView>().ToList();
@@ -70,12 +71,10 @@ namespace Views
             }
         }
 
-        public void CreateNewTarget(int x, int y)
+        public void CreateNewTarget(int x, int y , bool player1)
         {
-            Debug.Log("CreateNewTarget: "+ x +" "+y);
             KeyValuePair<int, int> location = new KeyValuePair<int, int>(x, y);
             OnPlayerPressTargetEventAction?.Invoke(location);
-            
         }
         private Image GetTargetImage(KeyValuePair<int, int> keyValuePair)
         {

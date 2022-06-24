@@ -1,6 +1,7 @@
 using System;
 using Controllers;
 using StaticClasses;
+using Timer;
 
 namespace Models.GameModels
 {
@@ -10,7 +11,6 @@ namespace Models.GameModels
     }
     public class PvCGameModel : GameModel
     {
-        public bool ClientPlaying { set; get; } = false;
 
         public override event Action<float,bool> OnMoveToNextTurnEventAction;
         
@@ -19,12 +19,13 @@ namespace Models.GameModels
             base.MoveToNextTurn();
             if (!GameOver)
             {
-                ClientPlaying = !ClientPlaying;
-                OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,ClientPlaying);
+                OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,_isPlayer1);
 
-                if (!ClientPlaying)
+                if (!_isPlayer1)
                 {
-                    Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke();
+                    //Delay the computer target choose by 1 sec to make the game flow looks good.
+                    TimerRunner.SharedInstance.FireTimer(1,
+                        (timer) => { Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke(); });
                 }
              
             }

@@ -13,7 +13,7 @@ namespace GameEvents
         
         public Action<GameState> GameOverAction;
         
-        public Action<int, int> OnPlayerPressTarget;
+        public Action<int, int, bool> OnPlayerPressTarget;
         
         public Action OnComputerTurnAction;
     }

@@ -78,21 +78,26 @@ namespace Controllers
         
         private void OnTargetPressedByComputer()
         {
-            for (int i = 0; i < 3; i++)
+            Debug.Log("1");
+            bool randomTargetFound = false;
+            for (int i = 0; i < 3 && !randomTargetFound; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 3 && !randomTargetFound; j++)
                 {
+                    
+                    Debug.Log("1");
                     KeyValuePair<int, int> location = new KeyValuePair<int, int>(i, j);
                     bool result = _targetsModel.PlayerPressTargetButton(location);
                     if (result)
                     {
-                        _targetsView.AddTargetAtLocation(location,_gameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                        randomTargetFound = true;
+                        _targetsView.CreateNewTarget(location.Key,location.Value , false);
+                        _targetsView.AddTargetAtLocation(location, PLayerType.O);
                         _controllersEvents.OnPlayerPressTargetAction?.Invoke();
-                        break;
+                        
                     }
                 }
             }
-            _gameModel.MoveToNextTurn();
         }
 
         private void GameOver(GameState gameState)

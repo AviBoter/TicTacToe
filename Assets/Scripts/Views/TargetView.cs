@@ -25,5 +25,10 @@ namespace Views
         {
             return Pressed;
         }
+        
+        public void TargetPressed()
+        {
+            Pressed = true;
+        }
     }
 }

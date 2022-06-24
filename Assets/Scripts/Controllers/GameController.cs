@@ -103,7 +103,7 @@ namespace Controllers
         private void PlayerPressedTarget()
         {
             OnTimerStopped(0, _gameModel._isPlayer1);
-            _gameModel.MoveToNextTurn();
+            NextTurn();
         }
     }
 }
