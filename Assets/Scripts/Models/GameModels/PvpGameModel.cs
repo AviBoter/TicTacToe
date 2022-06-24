@@ -6,8 +6,7 @@ namespace Models.GameModels
 {
     public class PvpGameModel : GameModel
     {
-        public bool OPlaying { set; get; } = false;
-        public bool XPlaying { set; get; } = true;
+        public bool Player1Playing { set; get; } = true;
 
         public override event Action<float,bool> OnMoveToNextTurnEventAction;
         public override void MoveToNextTurn()
@@ -15,16 +14,8 @@ namespace Models.GameModels
             base.MoveToNextTurn();
             if (!GameOver)
             {
-                OPlaying = !OPlaying;
-                XPlaying = !XPlaying;
-                if (XPlaying)
-                {
-                    OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,true);
-                }
-                else
-                {
-                    OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,false);
-                }
+                Player1Playing = !Player1Playing;
+                OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,Player1Playing);
             }
         }
     }

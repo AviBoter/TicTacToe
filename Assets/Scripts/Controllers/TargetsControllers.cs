@@ -30,6 +30,7 @@ namespace Controllers
             _gameButtonsView.OnHintButtonPressedAction += OnHintButtonPressed;
             _targetsModel.OnDeleteLastMoveFromListAction += OnDeleteLastMoveFromModel;
             _targetsModel.OnGameStateChanged += GameOver;
+            _controllersEvents.OnComputerTurnAction += OnTargetPressedByComputer;
         }
 
         #region undoRelated
@@ -74,11 +75,31 @@ namespace Controllers
                 _controllersEvents.OnPlayerPressTargetAction?.Invoke();
             }
         }
+        
+        private void OnTargetPressedByComputer()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    KeyValuePair<int, int> location = new KeyValuePair<int, int>(i, j);
+                    bool result = _targetsModel.PlayerPressTargetButton(location);
+                    if (result)
+                    {
+                        _targetsView.AddTargetAtLocation(location,_gameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                        _controllersEvents.OnPlayerPressTargetAction?.Invoke();
+                        break;
+                    }
+                }
+            }
+            _gameModel.MoveToNextTurn();
+        }
 
         private void GameOver(GameState gameState)
         {
             _controllersEvents.GameOverAction?.Invoke(gameState);
             _targetsView.OnPlayerPressTargetEventAction -= OnTargetPressedByPlayer;
+            _controllersEvents.OnComputerTurnAction -= OnTargetPressedByComputer;
         }
 
     }
