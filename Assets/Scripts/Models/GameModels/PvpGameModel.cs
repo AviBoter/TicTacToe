@@ -12,7 +12,7 @@ namespace Models.GameModels
             base.MoveToNextTurn();
             if (!GameOver)
             {
-                OnMoveToNextTurnEventAction?.Invoke(GlobalValues.TurnTime,_isPlayer1);
+                OnMoveToNextTurnEventAction.Invoke(GlobalValues.TurnTime,_isPlayer1);
             }
         }
     }

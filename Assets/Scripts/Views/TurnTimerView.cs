@@ -110,7 +110,6 @@ namespace Views
 
         private void OnDestroy()
         {
-            Debug.Log("OnDestroy called");
             if (_clientTimerViews.Contains(this))
             {
                 _clientTimerViews.Remove(this);

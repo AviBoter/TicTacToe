@@ -33,12 +33,14 @@ namespace Controllers
             
                 List<RaycastResult> results = new List<RaycastResult>();
                 _raycaster.Raycast(_pointerEventData, results);
-            
-                foreach (RaycastResult result in results)
+                if (results.Count > 0)
                 {
-                    if (result.gameObject.CompareTag("Target"))
+                    foreach (RaycastResult result in results)
                     {
-                        HandleResultView(result);
+                        if (result.gameObject.CompareTag("Target"))
+                        {
+                            HandleResultView(result);
+                        }
                     }
                 }
             }

@@ -16,9 +16,8 @@ namespace Controllers
         List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
         List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
         
-        public void Awake()
+        public void Start()
         {
-            Debug.Log("  _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;");
             StartCoroutine(AssignListeners());
         }
         
@@ -36,7 +35,7 @@ namespace Controllers
             _controllersEvents.OnPlayerPressUndoAction += PlayerPressedRestartAndUndo;
 
         }
-        
+
         private void OnTimerStarted(float time, bool isPlayer1)
         {
             if (isPlayer1)
@@ -103,6 +102,7 @@ namespace Controllers
         private IEnumerator ExitTheGame()
         {
             yield return new WaitForSeconds(3);
+            Lookup.Instance.GameModel = null;
             SceneManager.LoadScene(0);
         }
 
@@ -113,7 +113,6 @@ namespace Controllers
 
         private void PlayerPressedTarget()
         {
-            Debug.Log("PlayerPressedTarget _isPlayer1:"+_gameModel._isPlayer1);
             OnTimerStopped(0, _gameModel._isPlayer1);
             NextTurn();
         }
@@ -124,5 +123,6 @@ namespace Controllers
             _gameModel._isPlayer1 = false;
             _gameModel.MoveToNextTurn();
         }
+        
     }
 }
