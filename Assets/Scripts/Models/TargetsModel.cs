@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Controllers;
 using Models.GameModels;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum TargetState
 {
@@ -80,6 +80,23 @@ namespace Models
         public bool IsTargetAvailable(int x,int y)
         {
             return _targetsMatrix[x][y] == (int)TargetState.Non;
+        }
+        
+        public KeyValuePair<int,int> FindAvailableTarget()
+        {
+            bool randomTargetFound = false;
+            while (!randomTargetFound)
+            {
+                int xRandom = Random.Range(0, 3);
+                int yRandom = Random.Range(0, 3);
+                KeyValuePair<int, int> location = new KeyValuePair<int, int>(xRandom, yRandom);
+                bool result = IsTargetAvailable(location.Key, location.Value);
+                if (result)
+                {
+                    return location;
+                }
+            }
+            return new KeyValuePair<int, int>(-1, -1);
         }
         
         public bool PlayerPressTargetButton(KeyValuePair<int, int> location)

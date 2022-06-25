@@ -2,31 +2,32 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class MessagesManager : MonoBehaviour
+namespace StaticClasses
 {
-    [SerializeField]
-    private GameObject _gameObjectShowMessage = null;
-    public static MessagesManager Instance { get; private set; } = null;
-
-    void Awake()
+    public class MessagesManager : MonoBehaviour
     {
-        if (Instance != null)
-        {
-            Debug.Log("Attempting to create second MessagesManager on " + _gameObjectShowMessage.name);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
+        [SerializeField]
+        private GameObject _gameObjectShowMessage = null;
+        public static MessagesManager Instance { get; private set; } = null;
 
-         public void ShowMessage(string text, float time)
+        void Awake()
+        {
+            if (Instance != null)
+            {
+                Debug.Log("Attempting to create second MessagesManager on " + _gameObjectShowMessage.name);
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+        }
+
+        public void ShowMessage(string text, float time)
         {
             StartCoroutine(Popup(text,time));
         }
 
-         IEnumerator Popup(string text,float time)
+        IEnumerator Popup(string text,float time)
         {
             _gameObjectShowMessage.transform.DOKill();
             _gameObjectShowMessage.SetActive(true);
@@ -36,4 +37,5 @@ public class MessagesManager : MonoBehaviour
             _gameObjectShowMessage.SetActive(false);
         }
 
+    }
 }

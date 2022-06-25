@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using GameEvents;
 using Models;
 using Models.GameModels;
 using UnityEngine;
 using Views;
-using Random = UnityEngine.Random;
 
 namespace Controllers
 {
@@ -79,38 +77,23 @@ namespace Controllers
         }
         
         private void OnTargetPressedByComputer(PlayerType type)
-        { 
-            bool randomTargetFound = false;
-           while(!randomTargetFound)
-           {
-               int xRandom = Random.Range(0, 3);
-               int yRandom = Random.Range(0, 3);
-               KeyValuePair<int, int> location = new KeyValuePair<int, int>(xRandom, yRandom);
-               bool result = _targetsModel.PlayerPressTargetButton(location);
-               if (result)
-               {
-                   randomTargetFound = true;
-                   _targetsView.CreateNewTarget(location.Key,location.Value , false);
-                   _targetsView.AddTargetAtLocation(location, type);
-                   _controllersEvents.OnPlayerPressTargetAction?.Invoke();
-               }
-           }
+        {
+            KeyValuePair<int,int> result = _targetsModel.FindAvailableTarget();
+            if (result.Key!=-1)
+            {
+                _targetsModel.PlayerPressTargetButton(result);
+                _targetsView.CreateNewTarget(result.Key,result.Value , false);
+                _targetsView.AddTargetAtLocation(result, type);
+                _controllersEvents.OnPlayerPressTargetAction?.Invoke();
+            }
         }
         
         private void OnTargetSuggestedToPlayer(PlayerType type)
-        { 
-            bool randomTargetFound = false;
-            while(!randomTargetFound)
+        {
+            KeyValuePair<int,int> result = _targetsModel.FindAvailableTarget();
+            if (result.Key!=-1)
             {
-                int xRandom = Random.Range(0, 3);
-                int yRandom = Random.Range(0, 3);
-                KeyValuePair<int, int> location = new KeyValuePair<int, int>(xRandom, yRandom);
-                bool result = _targetsModel.IsTargetAvailable(location.Key, location.Value);
-                if (result)
-                {
-                    _targetsView.SuggestTargetAtLocation(location, type);
-                    break;
-                }
+                _targetsView.SuggestTargetAtLocation(result, type);
             }
         }
 

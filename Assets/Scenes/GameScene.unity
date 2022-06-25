@@ -1127,9 +1127,25 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 5635740471910080037, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740471910080037, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5635740472436986842, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740472436986843, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740472436986843, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
       objectReference: {fileID: 0}
     - target: {fileID: 5635740472475051118, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_RaycastTarget
@@ -1259,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 5635740473115625280, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5635740473115625283, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
@@ -1266,6 +1286,14 @@ PrefabInstance:
     - target: {fileID: 5635740473216266065, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473216266070, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473216266070, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
       objectReference: {fileID: 0}
     - target: {fileID: 5635740473242346383, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1279,6 +1307,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Views.GameButtonsController, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5635740473261129692, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5635740473261129695, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
@@ -1287,9 +1319,21 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5635740473332921296, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473332921296, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5635740473332921299, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473367926306, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
       objectReference: {fileID: 0}
     - target: {fileID: 5635740473367926365, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
@@ -1302,6 +1346,14 @@ PrefabInstance:
     - target: {fileID: 5635740473620050272, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473620050273, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635740473620050273, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.3
       objectReference: {fileID: 0}
     - target: {fileID: 5635740473820879716, guid: 95d9bce70784c47cdb2b2ec07030fb8c, type: 3}
       propertyPath: m_RaycastTarget

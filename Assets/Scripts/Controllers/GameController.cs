@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameEvents;
 using Models.GameModels;
+using StaticClasses;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Views;
@@ -13,27 +14,36 @@ namespace Controllers
         private GameModel _gameModel => Lookup.Instance.GameModel;
 
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
-        List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
-        List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
-        
-        public void Start()
+        private List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
+        private List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
+
+        private void Awake()
+        {
+            _controllersEvents.OnPlayerPressTargetAction += PlayerPressedTarget;
+            _controllersEvents.OnPlayerPressRestartAction += PlayerPressedRestartAndUndo;
+            _controllersEvents.OnPlayerPressUndoAction += PlayerPressedRestartAndUndo;
+        }
+
+        private void Start()
         {
             StartCoroutine(AssignListeners());
         }
         
-        IEnumerator AssignListeners()
+        private IEnumerator AssignListeners()
         {
             yield return new WaitUntil(() => Lookup.Instance.CrossControllersEvents != null);
             _controllersEvents.GameOverAction += GameOver;
             
-            yield return new WaitUntil(() => _clientTimerView != null);
-            OnTimerStarted(5, true);
             yield return new WaitUntil(() => _gameModel != null);
             _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;
-            _controllersEvents.OnPlayerPressTargetAction += PlayerPressedTarget;
-            _controllersEvents.OnPlayerPressRestartAction += PlayerPressedRestartAndUndo;
-            _controllersEvents.OnPlayerPressUndoAction += PlayerPressedRestartAndUndo;
-
+            if (_gameModel is PvCGameModel)
+            {
+                PvCGameModel model = (PvCGameModel)_gameModel;
+                model.OnComputerTurnAction += OnComputerTurn;
+            }
+            
+            yield return new WaitUntil(() => _clientTimerView != null);
+            OnTimerStarted(5, true);
         }
 
         private void OnTimerStarted(float time, bool isPlayer1)
@@ -83,9 +93,15 @@ namespace Controllers
             _gameModel.OnMoveToNextTurnEventAction -= OnTimerStarted;
             OnTimerStopped(0,_gameModel._isPlayer1);
             _gameModel.SetGameState(state);
+            ShowMessage(state);
+            StartCoroutine(ExitTheGame());
+        }
+
+        private void ShowMessage(GameState state)
+        {
             if (state == GameState.Tie)
             {
-                MessagesManager.Instance.ShowMessage("Game Over!",3);
+                MessagesManager.Instance.ShowMessage("Draw!",3);
             }
             else
             {
@@ -95,8 +111,6 @@ namespace Controllers
                 }
                 MessagesManager.Instance.ShowMessage((state == GameState.XWin ? "Player1" : "Player2") +" Win the Game!",3);
             }
-
-            StartCoroutine(ExitTheGame());
         }
 
         private IEnumerator ExitTheGame()
@@ -123,6 +137,12 @@ namespace Controllers
             _gameModel._isPlayer1 = false;
             _gameModel.MoveToNextTurn();
         }
+
+        private void OnComputerTurn(PlayerType playerType)
+        {
+            Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke(playerType);
+        }
+       
         
     }
 }

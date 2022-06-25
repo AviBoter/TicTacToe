@@ -11,8 +11,8 @@ namespace Models.GameModels
     }
     public class PvCGameModel : GameModel
     {
-
         public override event Action<float,bool> OnMoveToNextTurnEventAction;
+        public event Action<PlayerType> OnComputerTurnAction;
         
         public override void MoveToNextTurn()
         {
@@ -23,11 +23,10 @@ namespace Models.GameModels
 
                 if (!_isPlayer1)
                 {
-                    //Delay the computer target choose by 1 sec to make the game flow looks good.
-                    TimerRunner.SharedInstance.FireTimer(1,
-                        (timer) => { Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke(PlayerType.O);});
+                    //Computer target choose delayed by 1 sec to make the game flow looks smooth.
+                    TimerRunner.SharedInstance.FireTimer(1, (timer) 
+                        => {OnComputerTurnAction?.Invoke(PlayerType.O);});
                 }
-             
             }
         }
     }

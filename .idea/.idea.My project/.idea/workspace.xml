@@ -23,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Models/PlayerMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Models/TargetsModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticClasses/GlobalValues.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/aviboter/My project/Assets/Scripts/TestProject1/TestProject1/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/ITimerView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetsView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -96,7 +97,8 @@
       <workItem from="1655841931156" duration="40000" />
       <workItem from="1655842040754" duration="204000" />
       <workItem from="1655842252430" duration="34470000" />
-      <workItem from="1655933241200" duration="74352000" />
+      <workItem from="1655933241200" duration="74539000" />
+      <workItem from="1656184508332" duration="3333000" />
     </task>
     <servers />
   </component>
