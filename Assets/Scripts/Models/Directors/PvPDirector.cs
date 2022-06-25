@@ -19,7 +19,10 @@ namespace  Models.Directors
 
         public override void StartGame(TournamentDefinition tournamentDefinition)
         {
-            Lookup.Instance.GameModel = new PvpGameModel();
+            if (Lookup.Instance.GameModel is PvpGameModel == false)
+            {
+                Lookup.Instance.GameModel = new PvpGameModel();
+            }
         }
     }
 }

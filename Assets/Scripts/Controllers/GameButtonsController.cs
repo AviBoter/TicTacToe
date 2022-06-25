@@ -1,8 +1,7 @@
 using System;
-using Controllers;
 using UnityEngine;
 
-namespace Views
+namespace Controllers
 {
     public class GameButtonsController : MonoBehaviour
     {
@@ -16,16 +15,14 @@ namespace Views
             if (!_isPvP)
             {
                 OnUndoButtonPressedAction?.Invoke();
+                Lookup.Instance.CrossControllersEvents.OnPlayerPressUndoAction.Invoke();
             }
         }
     
         public void OnRestartButtonPressed()
         {
-            if (!_isPvP)
-            {
-                OnRestartButtonPressedAction?.Invoke();
-                Lookup.Instance.CrossControllersEvents.OnPlayerPressRestartAction.Invoke();
-            }
+            OnRestartButtonPressedAction?.Invoke();
+            Lookup.Instance.CrossControllersEvents.OnPlayerPressRestartAction.Invoke();
         }
     
         public void OnHintButtonPressed()

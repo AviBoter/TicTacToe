@@ -18,6 +18,7 @@ namespace Controllers
         
         public void Awake()
         {
+            Debug.Log("  _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;");
             StartCoroutine(AssignListeners());
         }
         
@@ -31,7 +32,8 @@ namespace Controllers
             yield return new WaitUntil(() => _gameModel != null);
             _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;
             _controllersEvents.OnPlayerPressTargetAction += PlayerPressedTarget;
-            _controllersEvents.OnPlayerPressRestartAction += PlayerPressedRestart;
+            _controllersEvents.OnPlayerPressRestartAction += PlayerPressedRestartAndUndo;
+            _controllersEvents.OnPlayerPressUndoAction += PlayerPressedRestartAndUndo;
 
         }
         
@@ -63,7 +65,7 @@ namespace Controllers
             });
         }
 
-        private void OnTimerStopped(float stopTime, bool isPlayer1 = true)
+        private void OnTimerStopped(float stopTime, bool isPlayer1)
         {
             if (isPlayer1)
             {
@@ -79,7 +81,8 @@ namespace Controllers
         {
             _controllersEvents.OnPlayerPressTargetAction -= PlayerPressedTarget;
             _controllersEvents.GameOverAction -= GameOver;
-            OnTimerStopped(0);
+            _gameModel.OnMoveToNextTurnEventAction -= OnTimerStarted;
+            OnTimerStopped(0,_gameModel._isPlayer1);
             _gameModel.SetGameState(state);
             if (state == GameState.Tie)
             {
@@ -110,11 +113,12 @@ namespace Controllers
 
         private void PlayerPressedTarget()
         {
+            Debug.Log("PlayerPressedTarget _isPlayer1:"+_gameModel._isPlayer1);
             OnTimerStopped(0, _gameModel._isPlayer1);
             NextTurn();
         }
 
-        private void PlayerPressedRestart()
+        private void PlayerPressedRestartAndUndo()
         {
             OnTimerStarted(5,true);
             _gameModel._isPlayer1 = false;

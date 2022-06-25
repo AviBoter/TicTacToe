@@ -1,14 +1,7 @@
 using System;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace Models.GameModels
 {
-
-    public enum GameType
-    {
-        PvP = 0, PvC = 1, CvC = 2
-    }
     public enum GameState
     {
         OnGoing = 0, XWin = 1, OWin = 2, Tie = 3

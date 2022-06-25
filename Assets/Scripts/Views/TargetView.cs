@@ -9,7 +9,7 @@ namespace Views
         [SerializeField] private int _xLocation;
         [SerializeField] private int _yLocation;
 
-        private bool Pressed = false;
+        private bool _pressed = false;
 
         public int GetX()
         {
@@ -23,12 +23,12 @@ namespace Views
         
         public bool IsPressed()
         {
-            return Pressed;
+            return _pressed;
         }
         
         public void TargetPressed(bool value)
         {
-            Pressed = value;
+            _pressed = value;
         }
     }
 }

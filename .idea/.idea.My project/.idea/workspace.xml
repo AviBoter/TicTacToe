@@ -26,6 +26,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetsView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TurnTimerView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/treeview/TimelineDragging.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/CanvasScalerEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,7 +95,7 @@
       <workItem from="1655841931156" duration="40000" />
       <workItem from="1655842040754" duration="204000" />
       <workItem from="1655842252430" duration="34470000" />
-      <workItem from="1655933241200" duration="54186000" />
+      <workItem from="1655933241200" duration="68419000" />
     </task>
     <servers />
   </component>

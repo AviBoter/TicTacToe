@@ -41,10 +41,10 @@ namespace Controllers
         {
             _targetsModel.DeleteLastMoveFromList();
         }
-        
-        private void OnDeleteLastMoveFromModel(PlayerMove playerMove)
+
+        private void OnDeleteLastMoveFromModel(KeyValuePair<int, int> location)
         {
-            _targetsView.RemoveTargetAtLocation(playerMove.Location);
+            _targetsView.RemoveTargetAtLocation(location);
         }
 
         #endregion
@@ -53,7 +53,6 @@ namespace Controllers
         
         private void OnRestartButtonPressed()
         {
-            Debug.Log("Restart called!");
             _targetsModel.Reset();
             _targetsView.ResetView();
         }

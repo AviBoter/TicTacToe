@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Controllers;
 using Models.GameModels;
@@ -23,7 +22,7 @@ namespace Models
         private int[][] _targetsMatrix;
         private LinkedList<PlayerMove> _playersMoves;
 
-        public event Action<PlayerMove> OnDeleteLastMoveFromListAction;
+        public event Action<KeyValuePair<int,int>> OnDeleteLastMoveFromListAction;
         public event Action<GameState> OnGameStateChanged;
         public TargetsModel()
         {
@@ -50,9 +49,17 @@ namespace Models
         
         public void DeleteLastMoveFromList()
         {
-            PlayerMove deleted = new PlayerMove(_playersMoves.First.Value);
-            _playersMoves.RemoveFirst();
-            OnDeleteLastMoveFromListAction?.Invoke(deleted);
+            if(_playersMoves.Count % 2 == 0 && _playersMoves.Count>1)
+            {
+                KeyValuePair<int, int> location = _playersMoves.First.Value.Location;
+                OnDeleteLastMoveFromListAction?.Invoke(location);
+                _targetsMatrix[location.Key][location.Value] = (int)TargetState.Non;
+                _playersMoves.RemoveFirst();
+                location = _playersMoves.First.Value.Location;
+                OnDeleteLastMoveFromListAction?.Invoke(location);
+                _playersMoves.RemoveFirst();
+                _targetsMatrix[location.Key][location.Value] = (int)TargetState.Non;
+            }
         }
 
         public void Reset()

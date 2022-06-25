@@ -18,5 +18,7 @@ namespace GameEvents
         public Action OnComputerTurnAction;
         
         public Action OnPlayerPressRestartAction;
+        
+        public Action OnPlayerPressUndoAction;
     }
 }

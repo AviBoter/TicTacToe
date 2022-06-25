@@ -43,15 +43,10 @@ namespace Views
         private List<TargetView> targets;
 
         public event Action<KeyValuePair<int, int>> OnPlayerPressTargetEventAction;
-        public event Action OnComputerPressTargetEventAction;
         private void Awake()
         {
             targets = GetComponentsInChildren<TargetView>().ToList();
-            foreach (var targetView in targets)
-            {
-                _controllersEvents.OnPlayerPressTarget += CreateNewTarget;
-            }
-
+            _controllersEvents.OnPlayerPressTarget += CreateNewTarget;
             _controllersEvents.GameOverAction += GameOver;
             _controllersEvents.OnPlayerPressRestartAction += ResetAllViews;
         }
@@ -63,12 +58,12 @@ namespace Views
             if (type == PLayerType.O)
             {
                 target.sprite = O;
-                target.DOColor(new Color(0, 0, 0, 1f), 0.5f);
+                target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
             }
             else
             {
                 target.sprite = X;
-                target.DOColor(new Color(0, 0, 0, 1f), 0.5f);
+                target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
             }
         }
 
@@ -108,7 +103,8 @@ namespace Views
             Image target = GetTargetImage(location);
 
             target.sprite = null;
-            target.DOColor(new Color(0, 0, 0, 0f), 0.5f);
+            target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
+            target.GetComponent<TargetView>().TargetPressed(false);
         }
         
         public void ResetView()
@@ -126,17 +122,15 @@ namespace Views
 
         private void GameOver(GameState state)
         {
-            _controllersEvents.OnPlayerPressTarget -= CreateNewTarget;
             _controllersEvents.GameOverAction -= GameOver;
             ResetAllViews();
         }
 
         private void ResetAllViews()
         {
-            List<TargetView> views = gameObject.GetComponentsInChildren<TargetView>().ToList();
+            List<TargetView> views = gameObject.GetComponentsInChildren<TargetView>()?.ToList();
             foreach (TargetView view in views)
             {
-                Debug.Log("view.TargetPressed(false)");
                 view.TargetPressed(false);
             }
             _controllersEvents.OnPlayerPressRestartAction -= ResetAllViews;

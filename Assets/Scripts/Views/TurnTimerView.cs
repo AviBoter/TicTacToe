@@ -83,22 +83,6 @@ namespace Views
             }
         }
 
-        private void OnTimerStarted(float time, bool isClient)
-        {
-            if (isClient)
-            {
-                _opponentTimerViews.ForEach(timerView => timerView.StopTimerView(0));
-                _clientTimerViews.ForEach(timerView => timerView.StartTimerView(time));
-                _countTimeBool = true;
-            }
-            else
-            {
-                _clientTimerViews.ForEach(timerView => timerView.StopTimerView(0));
-                _opponentTimerViews.ForEach(timerView => timerView.StartTimerView(time));
-                _countTimeBool = false;
-            }
-        }
-
         public void StartTimerView(float time)
         {
             _fillAmount = time/ GlobalValues.TurnTime;
@@ -126,6 +110,7 @@ namespace Views
 
         private void OnDestroy()
         {
+            Debug.Log("OnDestroy called");
             if (_clientTimerViews.Contains(this))
             {
                 _clientTimerViews.Remove(this);
