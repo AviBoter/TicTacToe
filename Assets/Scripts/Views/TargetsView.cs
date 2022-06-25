@@ -129,9 +129,12 @@ namespace Views
         private void ResetAllViews()
         {
             List<TargetView> views = gameObject.GetComponentsInChildren<TargetView>()?.ToList();
-            foreach (TargetView view in views)
+            if (views != null)
             {
-                view.TargetPressed(false);
+                foreach (TargetView view in views)
+                {
+                    view.TargetPressed(false);
+                }
             }
             _controllersEvents.OnPlayerPressRestartAction -= ResetAllViews;
         }
