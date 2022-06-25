@@ -40,22 +40,22 @@ namespace Views
         [SerializeField]
         private Image _twoXTwo;
         
-        private List<TargetView> targets;
+        private List<TargetView> _targets;
 
         public event Action<KeyValuePair<int, int>> OnPlayerPressTargetEventAction;
         private void Awake()
         {
-            targets = GetComponentsInChildren<TargetView>().ToList();
+            _targets = GetComponentsInChildren<TargetView>().ToList();
             _controllersEvents.OnPlayerPressTarget += CreateNewTarget;
             _controllersEvents.GameOverAction += GameOver;
             _controllersEvents.OnPlayerPressRestartAction += ResetAllViews;
         }
         
-        public void AddTargetAtLocation(KeyValuePair<int,int> location,PLayerType type)
+        public void AddTargetAtLocation(KeyValuePair<int,int> location,PlayerType type)
         {
             Image target = GetTargetImage(location);
             
-            if (type == PLayerType.O)
+            if (type == PlayerType.O)
             {
                 target.sprite = O;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
@@ -64,6 +64,28 @@ namespace Views
             {
                 target.sprite = X;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
+            }
+        }
+        
+        public void SuggestTargetAtLocation(KeyValuePair<int,int> location,PlayerType type)
+        {
+            Image target = GetTargetImage(location);
+            
+            if (type == PlayerType.O)
+            {
+                target.sprite = O;
+                target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f).OnComplete(() =>
+                {
+                    target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
+                });
+            }
+            else
+            {
+                target.sprite = X;
+                target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f).OnComplete(() =>
+                {
+                    target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
+                });
             }
         }
 
@@ -128,10 +150,9 @@ namespace Views
 
         private void ResetAllViews()
         {
-            List<TargetView> views = gameObject.GetComponentsInChildren<TargetView>()?.ToList();
-            if (views != null)
+            if (_targets != null)
             {
-                foreach (TargetView view in views)
+                foreach (TargetView view in _targets)
                 {
                     view.TargetPressed(false);
                 }

@@ -15,7 +15,7 @@ namespace Models
             Location = other.Location;
             State = other.State;
         }
-        public PlayerMove(KeyValuePair<int, int> location, PLayerType type)
+        public PlayerMove(KeyValuePair<int, int> location, PlayerType type)
         {
             Location = location;
             State = (TargetState)type;

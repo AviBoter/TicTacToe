@@ -9,7 +9,7 @@ public enum TargetState
     Non = 0, X = 1, O = 2
 }
 
-public enum PLayerType
+public enum PlayerType
 {
     X = 1, O = 2
 }
@@ -36,7 +36,7 @@ namespace Models
            
         }
         
-        public void AddMoveToList(KeyValuePair<int, int> location, PLayerType player)
+        public void AddMoveToList(KeyValuePair<int, int> location, PlayerType player)
         {
             _playersMoves.AddFirst(new PlayerMove(location, player));
             _targetsMatrix[location.Key][location.Value] = (int)(TargetState)player;
@@ -77,7 +77,7 @@ namespace Models
             }
         }
 
-        private bool IsTargetAvailable(int x,int y)
+        public bool IsTargetAvailable(int x,int y)
         {
             return _targetsMatrix[x][y] == (int)TargetState.Non;
         }
@@ -86,7 +86,7 @@ namespace Models
         {
             if (IsTargetAvailable(location.Key, location.Value))
             {
-                AddMoveToList(location, Lookup.Instance.GameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                AddMoveToList(location, Lookup.Instance.GameModel._isPlayer1 ? PlayerType.X : PlayerType.O);
                 return true;
             }
             return false;
@@ -160,9 +160,9 @@ namespace Models
                 if (_targetsMatrix[row][0] == _targetsMatrix[row][1] &&
                     _targetsMatrix[row][1] == _targetsMatrix[row][2])
                 {
-                    if (_targetsMatrix[row][0] == (int)PLayerType.X)
+                    if (_targetsMatrix[row][0] == (int)PlayerType.X)
                         return GameState.XWin;
-                    if(_targetsMatrix[row][0] == (int)PLayerType.O)
+                    if(_targetsMatrix[row][0] == (int)PlayerType.O)
                         return GameState.OWin;
                 }
             }
@@ -176,10 +176,10 @@ namespace Models
                 if (_targetsMatrix[0][col] == _targetsMatrix[1][col] &&
                     _targetsMatrix[1][col] == _targetsMatrix[2][col])
                 {
-                    if (_targetsMatrix[0][col] == (int)PLayerType.X)
+                    if (_targetsMatrix[0][col] == (int)PlayerType.X)
                         return GameState.XWin;
  
-                    else if (_targetsMatrix[0][col] == (int)PLayerType.O)
+                    else if (_targetsMatrix[0][col] == (int)PlayerType.O)
                         return GameState.OWin;
                 }
             }

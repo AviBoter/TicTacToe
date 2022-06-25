@@ -25,7 +25,7 @@ namespace Models.GameModels
                 {
                     //Delay the computer target choose by 1 sec to make the game flow looks good.
                     TimerRunner.SharedInstance.FireTimer(1,
-                        (timer) => { Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke(); });
+                        (timer) => { Lookup.Instance.CrossControllersEvents.OnComputerTurnAction?.Invoke(PlayerType.O);});
                 }
              
             }

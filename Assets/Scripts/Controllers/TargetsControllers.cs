@@ -63,7 +63,7 @@ namespace Controllers
         
         private void OnHintButtonPressed()
         {
-           
+            OnTargetSuggestedToPlayer(PlayerType.X);
         }
         
         #endregion
@@ -73,12 +73,12 @@ namespace Controllers
             bool result = _targetsModel.PlayerPressTargetButton(location);
             if (result)
             {
-                _targetsView.AddTargetAtLocation(location,_gameModel._isPlayer1 ? PLayerType.X : PLayerType.O);
+                _targetsView.AddTargetAtLocation(location,_gameModel._isPlayer1 ? PlayerType.X : PlayerType.O);
                 _controllersEvents.OnPlayerPressTargetAction?.Invoke();
             }
         }
         
-        private void OnTargetPressedByComputer()
+        private void OnTargetPressedByComputer(PlayerType type)
         { 
             bool randomTargetFound = false;
            while(!randomTargetFound)
@@ -91,10 +91,27 @@ namespace Controllers
                {
                    randomTargetFound = true;
                    _targetsView.CreateNewTarget(location.Key,location.Value , false);
-                   _targetsView.AddTargetAtLocation(location, PLayerType.O);
+                   _targetsView.AddTargetAtLocation(location, type);
                    _controllersEvents.OnPlayerPressTargetAction?.Invoke();
                }
            }
+        }
+        
+        private void OnTargetSuggestedToPlayer(PlayerType type)
+        { 
+            bool randomTargetFound = false;
+            while(!randomTargetFound)
+            {
+                int xRandom = Random.Range(0, 3);
+                int yRandom = Random.Range(0, 3);
+                KeyValuePair<int, int> location = new KeyValuePair<int, int>(xRandom, yRandom);
+                bool result = _targetsModel.IsTargetAvailable(location.Key, location.Value);
+                if (result)
+                {
+                    _targetsView.SuggestTargetAtLocation(location, type);
+                    break;
+                }
+            }
         }
 
         private void GameOver(GameState gameState)
