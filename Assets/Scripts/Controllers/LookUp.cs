@@ -96,6 +96,8 @@ namespace Controllers
                 _crossControllersEvents = value;
             }
         }
+        
+        public FadeView FadeView { set; get; }
 
     }
 }

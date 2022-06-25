@@ -2,73 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9717da71-e8dc-4cf9-a439-4337aec80028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/.idea/.idea.TestProject1/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/.idea/.idea.TestProject1/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/.idea/.idea.TestProject1/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/.idea/.idea.TestProject1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1.sln.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/TestProject1.csproj.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/bin.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/bin/Debug.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/bin/Debug/net6.0.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.AssemblyInfo.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.AssemblyInfoInputs.cache.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.GeneratedMSBuildEditorConfig.editorconfig.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.assets.cache.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/TestProject1.csproj.AssemblyReference.cache.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/ref.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/Debug/net6.0/refint.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.dgspec.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.g.props.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/TestProject1.csproj.nuget.g.targets.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.assets.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.nuget.cache.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/project.packagespec.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/rider.project.restore.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/TestProject1/TestProject1/obj/rider.project.restore.info.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TestProject1.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/.signature.p7s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/CHANGES.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/NOTICES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/NUnit.3.13.3.nupkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/build/NUnit.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net35/nunit.framework.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net35/nunit.framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net40/nunit.framework.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net40/nunit.framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net45/nunit.framework.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/net45/nunit.framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/netstandard2.0/nunit.framework.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Packages/NUnit.3.13.3/lib/netstandard2.0/nunit.framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../packages.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Prefabs/FadeInOutScreen.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Prefabs/FadeInOutScreen.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.My project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.My project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Controllers/GameButtonsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Controllers/GameButtonsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Game/FadeInImage.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Game/FadeInImage.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Game/safeArea.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/Game/safeArea.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/MainUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/MainUI.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Controllers/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Controllers/TargetsControllers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Controllers/TargetsControllers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Models/GameModels/PvCGameModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Models/GameModels/PvCGameModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Models/TargetsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Models/TargetsModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StaticClasses/MessagesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StaticClasses/MessagesManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Controllers/LookUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Controllers/LookUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TestProject1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestProject1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Views/FadeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Views/FadeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

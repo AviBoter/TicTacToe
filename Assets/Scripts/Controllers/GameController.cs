@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameEvents;
 using Models.GameModels;
 using StaticClasses;
+using Timer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Views;
@@ -12,7 +13,7 @@ namespace Controllers
     public class GameController : MonoBehaviour
     {
         private GameModel _gameModel => Lookup.Instance.GameModel;
-
+        
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         private List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
         private List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
@@ -115,6 +116,10 @@ namespace Controllers
 
         private IEnumerator ExitTheGame()
         {
+            TimerRunner.SharedInstance.FireTimer(2, (time) =>
+            {
+                Lookup.Instance.FadeView.AnimateFadeIn(1);
+            });
             yield return new WaitForSeconds(3);
             Lookup.Instance.GameModel = null;
             SceneManager.LoadScene(0);
