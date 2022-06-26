@@ -8,14 +8,13 @@ namespace Models.GameModels
     }
     public abstract class GameModel
     {
-        public bool GameOver = false;
+        protected bool GameOver = false;
         
         [NonSerialized]
         public bool _isPlayer1 = true;
         
         public abstract event Action<float,bool> OnMoveToNextTurnEventAction;
 
-        private GameState _curGameState { set; get; } = GameState.OnGoing;
         public virtual void MoveToNextTurn()
         {
             _isPlayer1 = !_isPlayer1;
@@ -26,15 +25,5 @@ namespace Models.GameModels
             GameOver = true;
         }
 
-        public GameState GetGameState()
-        {
-            return _curGameState;
-        }
-        
-        public void SetGameState(GameState state)
-        {
-           _curGameState = state;
-        }
-        
     }
 }

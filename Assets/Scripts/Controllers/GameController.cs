@@ -13,7 +13,6 @@ namespace Controllers
     public class GameController : MonoBehaviour
     {
         private GameModel _gameModel => Lookup.Instance.GameModel;
-        
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         private List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
         private List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;
@@ -93,7 +92,6 @@ namespace Controllers
             _controllersEvents.GameOverAction -= GameOver;
             _gameModel.OnMoveToNextTurnEventAction -= OnTimerStarted;
             OnTimerStopped(0,_gameModel._isPlayer1);
-            _gameModel.SetGameState(state);
             ShowMessage(state);
             StartCoroutine(ExitTheGame());
         }

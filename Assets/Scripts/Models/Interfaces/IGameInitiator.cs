@@ -8,7 +8,7 @@ namespace Models
     {
         public void StartGame(string tournamentType);
         
-        /*to be added if time will allows to:
+        /*todo - add if time will allows to:
         public void ContinueGame(ActiveTournament activeTournament);
         */
     }

@@ -20,7 +20,7 @@ namespace Models
     public class TargetsModel
     {
         private int[][] _targetsMatrix;
-        private LinkedList<PlayerMove> _playersMoves;
+        private readonly LinkedList<PlayerMove> _playersMoves;
 
         private int _counter = 0;
 
@@ -92,8 +92,8 @@ namespace Models
             {
                 return new KeyValuePair<int, int>(-1,-1);
             }
-            bool randomTargetFound = false;
-            while (!randomTargetFound)
+            //todo : separate available target and unavailable to improve function
+            while (true)
             {
                 int xRandom = Random.Range(0, 3);
                 int yRandom = Random.Range(0, 3);
@@ -104,7 +104,6 @@ namespace Models
                     return location;
                 }
             }
-            return new KeyValuePair<int, int>(-1, -1);
         }
         
         public bool PlayerPressTargetButton(KeyValuePair<int, int> location)
@@ -153,7 +152,7 @@ namespace Models
             {
                 for (int j = 0; j < _targetsMatrix[i].Length; j++)
                 {
-                    if (_targetsMatrix[i][j] == 0)
+                    if (_targetsMatrix[i][j] == (int)TargetState.Non)
                     {
                         state = GameState.OnGoing;
                     }
@@ -185,10 +184,13 @@ namespace Models
                 if (_targetsMatrix[row][0] == _targetsMatrix[row][1] &&
                     _targetsMatrix[row][1] == _targetsMatrix[row][2])
                 {
-                    if (_targetsMatrix[row][0] == (int)PlayerType.X)
-                        return GameState.XWin;
-                    if(_targetsMatrix[row][0] == (int)PlayerType.O)
-                        return GameState.OWin;
+                    switch (_targetsMatrix[row][0])
+                    {
+                        case (int)PlayerType.X:
+                            return GameState.XWin;
+                        case (int)PlayerType.O:
+                            return GameState.OWin;
+                    }
                 }
             }
             return GameState.OnGoing;
@@ -201,20 +203,22 @@ namespace Models
                 if (_targetsMatrix[0][col] == _targetsMatrix[1][col] &&
                     _targetsMatrix[1][col] == _targetsMatrix[2][col])
                 {
-                    if (_targetsMatrix[0][col] == (int)PlayerType.X)
-                        return GameState.XWin;
- 
-                    else if (_targetsMatrix[0][col] == (int)PlayerType.O)
-                        return GameState.OWin;
+                    switch (_targetsMatrix[0][col])
+                    {
+                        case (int)PlayerType.X:
+                            return GameState.XWin;
+                        case (int)PlayerType.O:
+                            return GameState.OWin;
+                    }
                 }
             }
 
             return GameState.OnGoing;
         }
 
-        public void SetMatrix(int[][] argetsMatrix)
+        public void SetMatrix(int[][] targetsMatrix)
         {
-            _targetsMatrix = argetsMatrix;
+            _targetsMatrix = targetsMatrix;
         }
     }
 }

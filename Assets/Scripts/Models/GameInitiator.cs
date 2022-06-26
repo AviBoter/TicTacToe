@@ -8,16 +8,18 @@ namespace Models
 {
     public class GameInitiator : MonoBehaviour, IGameInitiator
     {
+
+        private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         void Awake()
         {
             Lookup.Instance.GameInitiator = this;
-            Lookup.Instance.CrossControllersEvents.OnTournamentStartAction += StartGame;
+            _controllersEvents.OnTournamentStartAction += StartGame;
         }
         
         public async void StartGame(string tournamentType)
         {
             await LoadGameScene();
-            Lookup.Instance.CrossControllersEvents.OnTournamentStartAction -= StartGame;
+            _controllersEvents.OnTournamentStartAction -= StartGame;
             switch (tournamentType)
             {
                 case "PvP":
@@ -34,7 +36,7 @@ namespace Models
 
         private void ActivateDirector(TournamentDefinition tournamentDefinition)
         {
-            Lookup.Instance.CrossControllersEvents.OnTournamentDefinitionPLayAction?.Invoke(tournamentDefinition);
+            _controllersEvents.OnTournamentDefinitionPLayAction?.Invoke(tournamentDefinition);
         }
 
         private async Task LoadGameScene()

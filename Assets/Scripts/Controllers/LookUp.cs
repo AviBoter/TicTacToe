@@ -42,13 +42,6 @@ namespace Controllers
         
         #endregion
 
-        //Controllers
-
-        #region
-
-
-        #endregion
-
         //Views
 
         #region
