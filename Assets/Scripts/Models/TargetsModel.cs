@@ -203,5 +203,10 @@ namespace Models
 
             return GameState.OnGoing;
         }
+
+        public void SetMatrix(int[][] argetsMatrix)
+        {
+            _targetsMatrix = argetsMatrix;
+        }
     }
 }
