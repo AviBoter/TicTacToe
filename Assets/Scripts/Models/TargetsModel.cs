@@ -117,7 +117,7 @@ namespace Models
             return false;
         }
         
-        private GameState GetGameState()
+        public GameState GetGameState()
         {
             GameState state = CheckRowsVictory();
             if (state != 0)
