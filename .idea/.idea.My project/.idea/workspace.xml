@@ -31,7 +31,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TargetsView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/TurnTimerView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Tests/Tests/Hintt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/EditMode/Hint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEditor.TestRunner/UnityEditor.TestRunner.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/treeview/TimelineDragging.cs" root0="SKIP_HIGHLIGHTING" />
@@ -105,6 +105,7 @@
       <workItem from="1655933241200" duration="74539000" />
       <workItem from="1656184508332" duration="5852000" />
       <workItem from="1656202606239" duration="2590000" />
+      <workItem from="1656236310025" duration="4160000" />
     </task>
     <servers />
   </component>

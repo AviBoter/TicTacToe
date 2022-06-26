@@ -22,6 +22,8 @@ namespace Models
         private int[][] _targetsMatrix;
         private LinkedList<PlayerMove> _playersMoves;
 
+        private int _counter = 0;
+
         public event Action<KeyValuePair<int,int>> OnDeleteLastMoveFromListAction;
         public event Action<GameState> OnGameStateChanged;
         public TargetsModel()
@@ -38,6 +40,7 @@ namespace Models
         
         public void AddMoveToList(KeyValuePair<int, int> location, PlayerType player)
         {
+            _counter++;
             _playersMoves.AddFirst(new PlayerMove(location, player));
             _targetsMatrix[location.Key][location.Value] = (int)(TargetState)player;
             GameState state = GetGameState();
@@ -59,6 +62,7 @@ namespace Models
                 OnDeleteLastMoveFromListAction?.Invoke(location);
                 _playersMoves.RemoveFirst();
                 _targetsMatrix[location.Key][location.Value] = (int)TargetState.Non;
+                _counter -= 2;
             }
         }
 
@@ -84,6 +88,10 @@ namespace Models
         
         public KeyValuePair<int,int> FindAvailableTarget()
         {
+            if (_counter == 9)
+            {
+                return new KeyValuePair<int, int>(-1,-1);
+            }
             bool randomTargetFound = false;
             while (!randomTargetFound)
             {
