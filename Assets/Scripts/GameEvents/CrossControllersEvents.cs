@@ -1,6 +1,7 @@
 using System;
 using Models;
 using Models.GameModels;
+using UnityEngine;
 
 namespace GameEvents
 {
@@ -21,5 +22,7 @@ namespace GameEvents
         public Action OnPlayerPressRestartAction;
         
         public Action OnPlayerPressUndoAction;
+        
+        public Action<Sprite> OnReSkinPressedAction;
     }
 }

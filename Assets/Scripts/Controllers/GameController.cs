@@ -12,7 +12,7 @@ namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
-        private GameModel _gameModel => Lookup.Instance.GameModel;
+        private GameModel _gameModel => Lookup.Instance.GameModel;  
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         private List<ITimerView> _clientTimerView => Lookup.Instance.ClientTimerView;
         private List<ITimerView> _opponentTimeView => Lookup.Instance.OpponentTimerView;

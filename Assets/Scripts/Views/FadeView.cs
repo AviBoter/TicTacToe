@@ -30,7 +30,7 @@ namespace Views
             while (!finished) await Task.Delay(200);
         }
 
-        private async Task AnimateFadeOut(float time = 1)
+        public async Task AnimateFadeOut(float time = 1)
         {
             bool finished = false;
             _image.DOColor(new Color(0, 0, 0, 0.1f), time).OnStepComplete(() =>

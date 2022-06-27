@@ -12,6 +12,7 @@ namespace Controllers
         private TargetsModel _targetsModel;
         private TargetsView _targetsView;
         private GameButtonsController _gameButtonsController;
+        private ReplaceGameSkinView _replaceGameSkinView;
 
         private GameModel _gameModel => Lookup.Instance.GameModel;
         private CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
@@ -21,8 +22,8 @@ namespace Controllers
             _targetsView = FindObjectOfType<TargetsView>();
             _gameButtonsController = FindObjectOfType<GameButtonsController>();
             _targetsView.OnPlayerPressTargetEventAction += OnTargetPressedByPlayer;
+            HandleReSkin();
         }
-        
         void Start()
         {
             _gameButtonsController.OnUndoButtonPressedAction += OnUndoButtonPressed;
@@ -31,6 +32,18 @@ namespace Controllers
             _targetsModel.OnDeleteLastMoveFromListAction += OnDeleteLastMoveFromModel;
             _targetsModel.OnGameStateChanged += GameOver;
             _controllersEvents.OnComputerTurnAction += OnTargetPressedByComputer;
+        }
+        
+        private void HandleReSkin()
+        {
+            _replaceGameSkinView = FindObjectOfType<ReplaceGameSkinView>();
+            if (_replaceGameSkinView != null)
+            {
+                Debug.Log("got HandleReSkin");
+                _targetsView.SetXandOSprites(_replaceGameSkinView.GetXSprite(), _replaceGameSkinView.GetOSprite());
+                Sprite obj = _replaceGameSkinView.GetBgSprite();
+                Lookup.Instance.CrossControllersEvents.OnReSkinPressedAction(obj);
+            }
         }
 
         #region undoRelated

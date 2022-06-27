@@ -14,10 +14,8 @@ namespace Views
     {
         CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
             
-        [SerializeField]
-        private Sprite X;
-        [SerializeField]
-        private Sprite O;
+        [SerializeField] private Sprite _x;  
+        [SerializeField] private Sprite _o;
         
         [SerializeField]
         private Image _zeroXZero;
@@ -57,12 +55,12 @@ namespace Views
             
             if (type == PlayerType.O)
             {
-                target.sprite = O;
+                target.sprite = _o;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
             }
             else
             {
-                target.sprite = X;
+                target.sprite = _x;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f);
             }
         }
@@ -73,7 +71,7 @@ namespace Views
             
             if (type == PlayerType.O)
             {
-                target.sprite = O;
+                target.sprite = _o;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f).OnComplete(() =>
                 {
                     target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
@@ -81,7 +79,7 @@ namespace Views
             }
             else
             {
-                target.sprite = X;
+                target.sprite = _x;
                 target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 1f), 0.5f).OnComplete(() =>
                 {
                     target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
@@ -158,6 +156,13 @@ namespace Views
                 }
             }
             _controllersEvents.OnPlayerPressRestartAction -= ResetAllViews;
+        }
+
+        public void SetXandOSprites(Sprite x , Sprite o)
+        {
+            _x = x;
+            _o = o;
+            Debug.Log("got to SetXandOSprites");
         }
     }
 }
