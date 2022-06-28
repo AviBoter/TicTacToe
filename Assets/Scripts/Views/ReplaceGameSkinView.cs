@@ -1,6 +1,4 @@
-using System;
 using System.IO;
-using StaticClasses;
 using UnityEngine;
 
 namespace Views
@@ -20,7 +18,6 @@ namespace Views
         {
             DontDestroyOnLoad(gameObject);
         }
-        
         public void OnReplaceSkinPressed(string reSkinAssetBundleName)
         {
             var myLoadedAssetBundle 

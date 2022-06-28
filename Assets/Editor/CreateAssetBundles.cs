@@ -16,7 +16,7 @@ namespace Editor
 #if UNITY_IOS
             //for my people (BuildTarget.iOS)
             BuildPipeline.BuildAssetBundles(assetBundleDirectory, 
-                BuildAssetBundleOptions.None, 
+                BuildAssetBundleOptions.UncompressedAssetBundle, 
                 BuildTarget.iOS);
 #else
             //for the haters (BuildTarget.StandaloneWindows)

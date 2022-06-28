@@ -1,3 +1,4 @@
+using System.Linq;
 using StaticClasses;
 using UnityEditor;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace Editor
 
         private void OnGUI()
         {
+            var loaded =AssetBundle.GetAllLoadedAssetBundles();
+            Debug.Log(loaded.Count());
+            AssetBundle.UnloadAllAssetBundles(true);
             SetWindow();
         
             if (GUILayout.Button(BuildAssetBundle))
