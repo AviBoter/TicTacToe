@@ -1,4 +1,4 @@
-namespace Models
+namespace Models.Interfaces
 {
     public enum TournamentDefinition
     {

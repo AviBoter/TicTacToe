@@ -1,6 +1,7 @@
 
 using Controllers;
 using Models.GameModels;
+using Models.Interfaces;
 using UnityEngine;
 
 namespace  Models.Directors

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Controllers;
 using GameEvents;
+using Models.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -1,6 +1,7 @@
 using System;
 using Models;
 using Models.GameModels;
+using Models.Interfaces;
 using UnityEngine;
 
 namespace GameEvents

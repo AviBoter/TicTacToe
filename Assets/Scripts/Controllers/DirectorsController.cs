@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameEvents;
 using Models;
 using Models.GameModels;
+using Models.Interfaces;
 using UnityEngine;
 
 namespace Controllers

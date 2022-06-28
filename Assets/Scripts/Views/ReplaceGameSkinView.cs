@@ -10,6 +10,10 @@ namespace Views
         private Sprite _xSprite;
         private Sprite _oSprite;
         private Sprite _bgSprite;
+
+        private const string ExTarget = "ExTarget";
+        private const string CircleTarget = "CircleTarget";
+        private const string Background = "Background";
         
         // Start is called before the first frame update
         void Start()
@@ -36,13 +40,13 @@ namespace Views
             {
                 switch (sprite.name)
                 {
-                    case "ExTarget":
+                    case ExTarget:
                         _xSprite = sprite;
                         break;
-                    case "CircleTarget":
+                    case CircleTarget:
                         _oSprite = sprite;
                         break;
-                    case "Background":
+                    case Background:
                         _bgSprite = sprite;
                         break;
                 }

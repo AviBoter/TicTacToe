@@ -3,6 +3,7 @@ using System.Linq;
 using GameEvents;
 using Models;
 using Models.GameModels;
+using Models.Interfaces;
 using UnityEngine;
 using Views;
 
