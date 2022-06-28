@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4165222833
+CRC: 4065759005
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f618c7595c0eceee6fbd78e0542893c3
+    Hash: 08917a6aef43cb53f20ade0ec9028b1c
   TypeTreeHash:
     serializedVersion: 2
     Hash: c21d61fe394c58399df3c6fb5c7c99b3
@@ -17,6 +17,5 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Resources/Textures/MoonActive/X/ExTarget.png
 - Assets/Resources/Textures/MoonActive/BG/Background.png
-- Assets/Resources/Textures/AdditionalAssets/back_button.png
 - Assets/Resources/Textures/MoonActive/O/CircleTarget.png
 Dependencies: []

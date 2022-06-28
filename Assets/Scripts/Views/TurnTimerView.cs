@@ -85,6 +85,9 @@ namespace Views
 
         public void StartTimerView(float time)
         {
+            _turnTime = 5;
+            _timeCounter = 5;
+            _fillAmount = 5;
             _fillAmount = time/ GlobalValues.TurnTime;
             _countTimeBool = true;
             tween?.Kill();

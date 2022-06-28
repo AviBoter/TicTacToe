@@ -8,14 +8,21 @@ namespace Views
     {
         public void AssignNewBg(Sprite bg)
         {
-            Image image = GetComponent<Image>();
-            if (image != null)
+            try
             {
-                image.sprite = bg;
+                Image image = GetComponent<Image>();
+                if (image != null)
+                {
+                    image.sprite = bg;
+                }
+                else
+                {
+                    Debug.LogError("BackgroundView error");
+                }
             }
-            else
+            catch
             {
-                Debug.LogError("BackgroundView error");
+                Debug.LogError("you should create asset bundle before u try to re-skin!");
             }
         }
     }

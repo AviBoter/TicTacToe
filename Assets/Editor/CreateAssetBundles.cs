@@ -1,7 +1,6 @@
 using System.IO;
 using UnityEditor;
 
-//_controllersEvents.OnReSkinPressedAction.Invoke();
 namespace Editor
 {
     public static class CreateAssetBundles
@@ -10,10 +9,6 @@ namespace Editor
         public static void BuildAllAssetBundles()
         {
             string assetBundleDirectory = "Assets/StreamingAssets";
-            if (Directory.Exists(assetBundleDirectory))
-            {
-                Directory.Delete(assetBundleDirectory, true);
-            }
             if(!Directory.Exists(assetBundleDirectory))
             {
                 Directory.CreateDirectory(assetBundleDirectory);

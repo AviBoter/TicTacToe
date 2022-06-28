@@ -14,8 +14,8 @@ namespace Editor
         public static void ShowMyEditor()
         {
             // This method is called when the user selects the menu item in the Editor
-            EditorWindow wnd = GetWindow<CustomEditor>();
-            wnd.titleContent = new GUIContent("Custom Editor");
+            EditorWindow window = GetWindow<CustomEditor>();
+            window.titleContent = new GUIContent("Custom Editor");
         }
 
         private void OnGUI()
@@ -41,7 +41,7 @@ namespace Editor
             _reskin.SetBg((Sprite)EditorGUILayout.ObjectField("Background Sprite", _reskin.Bg(), typeof(Sprite)));
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Asset Bundle Name", EditorStyles.boldLabel);
-            _reskin.AssetBundleName(EditorGUILayout.TextField("BundleId",_reskin.GetAssetBundleName()));
+            _reskin.AssetBundleName(EditorGUILayout.TextField("Bundle Id",_reskin.GetAssetBundleName()));
             EditorGUILayout.Space(2);
             EditorGUILayout.Space();
         }

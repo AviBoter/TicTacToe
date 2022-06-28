@@ -2,6 +2,7 @@ using GameEvents;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Views;
 
 namespace Controllers
@@ -11,6 +12,7 @@ namespace Controllers
         CrossControllersEvents _controllersEvents => Lookup.Instance.CrossControllersEvents;
         
         [SerializeField] private TMP_Text _tournamentType;
+        [SerializeField] private TMP_Text _reSkinAssetBundleName;
     
         public void OnStartGame()
         {
@@ -22,7 +24,7 @@ namespace Controllers
         {
             GameObject myObject = Instantiate(new GameObject());
             myObject.AddComponent<ReplaceGameSkinView>();
-            myObject.GetComponent<ReplaceGameSkinView>().OnReplaceSkinPressed();
+            myObject.GetComponent<ReplaceGameSkinView>().OnReplaceSkinPressed(_reSkinAssetBundleName.text);
         }
     }
 }

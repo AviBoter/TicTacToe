@@ -49,8 +49,11 @@ namespace Editor
         }
         public void AssetBundleName(string str)
         {
-            _assetBundleName = str;
-            GlobalValues.BundleId = str;
+            if (str != null)
+            {
+                _assetBundleName = str.ToLower();
+                GlobalValues.BundleId = str.ToLower();
+            }
         }
 
         public string GetXPath()

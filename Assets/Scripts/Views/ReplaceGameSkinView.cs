@@ -17,10 +17,10 @@ namespace Views
             DontDestroyOnLoad(gameObject);
         }
         
-        public void OnReplaceSkinPressed()
+        public void OnReplaceSkinPressed(string reSkinAssetBundleName)
         {
             var myLoadedAssetBundle 
-                = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath,  GlobalValues.BundleId));
+                = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, reSkinAssetBundleName));
             if (myLoadedAssetBundle == null) {
                 Debug.Log("Failed to load AssetBundle!");
                 return;

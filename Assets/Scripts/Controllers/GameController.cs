@@ -33,7 +33,6 @@ namespace Controllers
         {
             yield return new WaitUntil(() => Lookup.Instance.CrossControllersEvents != null);
             _controllersEvents.GameOverAction += GameOver;
-            
             yield return new WaitUntil(() => _gameModel != null);
             _gameModel.OnMoveToNextTurnEventAction += OnTimerStarted;
             if (_gameModel is PvCGameModel)

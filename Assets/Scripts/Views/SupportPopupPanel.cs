@@ -10,7 +10,7 @@ namespace Views
         [SerializeField] private DropView _dropDown = null;
         private readonly List<string> _categoriesOptions = new List<string>()
         {
-            "PvP", "PvC", "CvC"
+            "Player Vs Player", "Player Vs Computer", "Computer Vs Computer"
         };
 
         private void Awake()

@@ -39,7 +39,6 @@ namespace Controllers
             _replaceGameSkinView = FindObjectOfType<ReplaceGameSkinView>();
             if (_replaceGameSkinView != null)
             {
-                Debug.Log("got HandleReSkin");
                 _targetsView.SetXandOSprites(_replaceGameSkinView.GetXSprite(), _replaceGameSkinView.GetOSprite());
                 Sprite obj = _replaceGameSkinView.GetBgSprite();
                 Lookup.Instance.CrossControllersEvents.OnReSkinPressedAction(obj);

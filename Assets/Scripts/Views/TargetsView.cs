@@ -121,10 +121,13 @@ namespace Views
         public void RemoveTargetAtLocation(KeyValuePair<int,int> location)
         {
             Image target = GetTargetImage(location);
-
-            target.sprite = null;
-            target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f);
-            target.GetComponent<TargetView>().TargetPressed(false);
+            
+            target.DOColor(new Color(target.color.r, target.color.g, target.color.b, 0f), 0.5f)
+                .OnComplete(()=>
+                {
+                    target.GetComponent<TargetView>().TargetPressed(false);
+                    target.sprite = null;
+                });
         }
         
         public void ResetView()
@@ -162,7 +165,6 @@ namespace Views
         {
             _x = x;
             _o = o;
-            Debug.Log("got to SetXandOSprites");
         }
     }
 }

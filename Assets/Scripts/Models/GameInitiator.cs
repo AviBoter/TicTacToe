@@ -22,13 +22,13 @@ namespace Models
             _controllersEvents.OnTournamentStartAction -= StartGame;
             switch (tournamentType)
             {
-                case "PvP":
+                case "Player Vs Player":
                     ActivateDirector(TournamentDefinition.PvP);
                     break;
-                case "PvC":
+                case "Player Vs Computer":
                     ActivateDirector(TournamentDefinition.PvC);
                     break;
-                case "CvC":
+                case "Computer Vs Computer":
                     ActivateDirector(TournamentDefinition.CvC);
                     break;
             }
